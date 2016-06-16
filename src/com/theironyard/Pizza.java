@@ -1,5 +1,7 @@
 package com.theironyard;
 
+import java.util.ArrayList;
+
 /**
  * Created by Ben on 6/16/16.
  */
@@ -9,17 +11,21 @@ public class Pizza {
     String size;
     String crust;
     String sauce;
-    String topping;
+    int userId;
+    ArrayList<Toppings> topping = new ArrayList<>();
+
+    public Pizza(int userId) {
+        this.userId = userId;
+    }
 
     public Pizza() {
     }
 
-    public Pizza(Integer id, String size, String crust, String sauce, String topping) {
+    public Pizza(Integer id, String size, String crust, String sauce) {
         this.id = id;
         this.size = size;
         this.crust = crust;
         this.sauce = sauce;
-        this.topping = topping;
 
     }
 
@@ -47,14 +53,6 @@ public class Pizza {
         this.crust = crust;
     }
 
-    public String getTopping() {
-        return topping;
-    }
-
-    public void setTopping(String topping) {
-        this.topping = topping;
-    }
-
     public String getSauce() {
         return sauce;
     }
@@ -63,4 +61,11 @@ public class Pizza {
         this.sauce = sauce;
     }
 
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
 }

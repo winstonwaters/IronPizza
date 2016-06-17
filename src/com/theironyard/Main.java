@@ -42,12 +42,29 @@ public class Main {
         stmt.setString(3, pizza.sauce);
         stmt.setInt(4, pizza.userId);
         stmt.execute();
+
+        //returns inserted pizza's id
+        ResultSet rs = stmt.getGeneratedKeys();
+        if (rs.next()) {
+            return rs.getInt(1);
+        }
+        return -1;
     }
 
-    public static void insertToppings(Connection conn, ArrayList<Toppings> topping, int pizza_id) throws SQLException {
-        PreparedStatement stmt = conn.prepareStatement("INSERT INTO pizzas VALUES (pizza_id, ?, ?)");
+    public static void insertToppings(Connection conn, ArrayList<Toppings> toppings, int pizzaId) throws SQLException {
 
+        int size = toppings.size();
+
+        for (int i = 0; i<size; i++) {
+            Toppings name = toppings.get(i);
+            PreparedStatement stmt = conn.prepareStatement("INSERT INTO toppings VALUES (NULL, ?, ?)");
+            stmt.setString(1, name.topping);
+            stmt.setInt(2, pizzaId);
+            stmt.execute();
+        }
     }
+
+
 
 
     public static void main(String[] args) throws SQLException {

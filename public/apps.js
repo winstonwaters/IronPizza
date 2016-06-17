@@ -1,5 +1,5 @@
 $(document).ready(function(){
-  pizza.init();
+  // pizza.init();
 })
 
 var pizza = {

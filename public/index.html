@@ -22,99 +22,51 @@
     <!-- Main body -->
     <div class="row">
         <div class="col-md-4">
+          <h1>Custom Pizza</h1>
+          <!-- order name -->
             <div class="row">
-
                 <div class="col-lg-offset-1 col-lg-10">
-                    <div class="input-group">
+                    <div class="input-group" id="order">
+                        <input type="text" name="order" value="" class="form-control" placeholder="Order Name">
                         <span class="input-group-btn">
-                          <button class="btn btn-secondary" type="button">Hate it</button>
-                        </span>
-                        <input type="text" class="form-control" placeholder="Order Name">
-                        <span class="input-group-btn">
-                          <button class="btn btn-secondary" type="button">Love it</button>
+                          <button class="btn btn-secondary" type="button">Go!</button>
                         </span>
                     </div>
                 </div>
             </div>
-
+            <!-- pizza size -->
             <div class="row">
-
                 <div class="col-lg-offset-1 col-lg-10">
-                    <div class="input-group">
+                    <div class="input-group" id="size">
+                        <input type="text" name="size" value="" class="form-control" placeholder="Size">
                         <span class="input-group-btn">
-                            <button class="btn btn-secondary" type="button">Hate it</button>
-                          </span>
-                        <input type="text" class="form-control" placeholder="Pizza Size">
-                        <span class="input-group-btn">
-                            <button class="btn btn-secondary" type="button">Love it</button>
-                          </span>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-
-                <div class="col-lg-offset-1 col-lg-10">
-                    <div class="input-group">
-                        <span class="input-group-btn">
-                              <button class="btn btn-secondary" type="button">Hate it</button>
-                            </span>
-                        <input type="text" class="form-control" placeholder="Crust Type">
-                        <span class="input-group-btn">
-                              <button class="btn btn-secondary" type="button">Love it</button>
-                            </span>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-
-                <div class="col-lg-offset-1 col-lg-10">
-                    <div class="input-group">
-                        <span class="input-group-btn">
-                                <button class="btn btn-secondary" type="button">Hate it</button>
-                              </span>
-                        <input type="text" class="form-control" placeholder="Topping ONE">
-                        <span class="input-group-btn">
-                                <button class="btn btn-secondary" type="button">Love it</button>
-                              </span>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-
-                <div class="col-lg-offset-1 col-lg-10">
-                    <div class="input-group">
-                        <span class="input-group-btn">
-                          <button class="btn btn-secondary" type="button">Hate it</button>
-                        </span>
-                        <input type="text" class="form-control" placeholder="Order Name">
-                        <span class="input-group-btn">
-                          <button class="btn btn-secondary" type="button">Love it</button>
+                          <button class="btn btn-secondary" type="button">Go!</button>
                         </span>
                     </div>
                 </div>
             </div>
-            <!-- order and delete buttons -->
+
 
 
         </div>
 
         <div class="col-md-4">
-        
+
 
         </div>
         <div class="col-md-4">
-          <div class="col-lg-offset-1 col-lg-10">
-              <ul class="list-group">
-                  <li class="list-group-item">Cras justo odio</li>
-                  <li class="list-group-item">Dapibus ac facilisis in</li>
-                  <li class="list-group-item">Morbi leo risus</li>
-                  <li class="list-group-item">Porta ac consectetur ac</li>
-                  <li class="list-group-item">Vestibulum at eros</li>
-              </ul>
-          </div>
+            <div class="col-lg-offset-1 col-lg-10">
+                <ul class="list-group" >
+                    <li class="list-group-item" id="nameList">Order Name: </li>
+                    <li class="list-group-item" id="sizeList">Dapibus ac facilisis in</li>
+                    <li class="list-group-item">Morbi leo risus</li>
+                    <li class="list-group-item">Porta ac consectetur ac</li>
+                    <li class="list-group-item">Vestibulum at eros</li>
+                </ul>
+            </div>
 
-          <button type="button" class="btn btn-primary btn-lg btn-block">Order Pizza!</button>
-          <button type="button" class="btn btn-secondary btn-lg btn-block">Delete Pizza :(</button>
+            <button type="button" class="btn btn-primary btn-lg btn-block">Order Pizza!</button>
+            <button type="button" class="btn btn-secondary btn-lg btn-block">Delete Pizza :(</button>
 
 
         </div>
@@ -136,7 +88,9 @@
 
     <script src="node_modules/jquery/dist/jquery.js" charset="utf-8"></script>
     <script src="node_modules/underscore/underscore.js" charset="utf-8"></script>
-    <script src="apps.js" charset="utf-8"></script>
+    <!-- <script src="apps.js" charset="utf-8"></script> -->
+    <script src="testclick.js" charset="utf-8"></script>
+
 </body>
 
 </html>

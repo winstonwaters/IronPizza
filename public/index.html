@@ -21,10 +21,13 @@
     </nav>
 
     <!-- Main body -->
+    <div class="ordering-container">
+
+
     <div class="row">
         <div class="col-md-4">
-          <h1>Custom Pizza</h1>
-          <!-- order name -->
+            <h1>Custom Pizza</h1>
+            <!-- order name -->
             <div class="row">
                 <div class="col-lg-offset-1 col-lg-10">
                     <div class="input-group" id="order">
@@ -46,11 +49,63 @@
                     </div>
                 </div>
             </div>
-
-
-
+            <!-- pizza crust -->
+            <div class="row">
+                <div class="col-lg-offset-1 col-lg-10">
+                    <div class="input-group" id="Crust">
+                        <input type="text" name="size" value="" class="form-control" placeholder="Crust">
+                        <span class="input-group-btn">
+                          <button class="btn btn-secondary" type="button">Go!</button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <!-- pizza sauce -->
+            <div class="row">
+                <div class="col-lg-offset-1 col-lg-10">
+                    <div class="input-group" id="sauce">
+                        <input type="text" name="size" value="" class="form-control" placeholder="sauce">
+                        <span class="input-group-btn">
+                          <button class="btn btn-secondary" type="button">Go!</button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <!-- pizza topping 1 -->
+            <div class="row">
+                <div class="col-lg-offset-1 col-lg-10">
+                    <div class="input-group" id="topping1">
+                        <input type="text" name="size" value="" class="form-control" placeholder="topping 1">
+                        <span class="input-group-btn">
+                          <button class="btn btn-secondary" type="button">Go!</button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <!-- pizza topping 2 -->
+            <div class="row">
+                <div class="col-lg-offset-1 col-lg-10">
+                    <div class="input-group" id="topping2">
+                        <input type="text" name="size" value="" class="form-control" placeholder="topping 2">
+                        <span class="input-group-btn">
+                          <button class="btn btn-secondary" type="button">Go!</button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <!-- pizza topping 3 -->
+            <div class="row">
+                <div class="col-lg-offset-1 col-lg-10">
+                    <div class="input-group" id="topping3">
+                        <input type="text" name="size" value="" class="form-control" placeholder="topping 3">
+                        <span class="input-group-btn">
+                          <button class="btn btn-secondary" type="button">Go!</button>
+                        </span>
+                    </div>
+                </div>
+            </div>
         </div>
-
+        <!-- center column -->
         <div class="col-md-4">
 
 
@@ -59,11 +114,13 @@
             <div class="col-lg-offset-1 col-lg-10">
 
                 <ul class="list-group">
-                    <li class="list-group-item">Cras justo odio</li>
-                    <li class="list-group-item">Dapibus ac facilisis in</li>
-                    <li class="list-group-item">Morbi leo risus</li>
-                    <li class="list-group-item">Porta ac consectetur ac</li>
-                    <li class="list-group-item">Vestibulum at eros</li>
+                    <li class="list-group-item"><input type="text" name="order" value="" class="form-control" placeholder="Order Name" disabled></li>
+                    <li class="list-group-item"><input type="text" name="size" value="" class="form-control" placeholder="Size" disabled></li>
+                    <li class="list-group-item"><input type="text" name="crust" value="" class="form-control" placeholder="crust" disabled></li>
+                    <li class="list-group-item"><input type="text" name="sauce" value="" class="form-control" placeholder="Sauce" disabled></li>
+                    <li class="list-group-item"><input type="text" name="topping1" value="" class="form-control" placeholder="Topping 1" disabled></li>
+                    <li class="list-group-item"><input type="text" name="topping2" value="" class="form-control" placeholder="Topping 2" disabled></li>
+                    <li class="list-group-item"><input type="text" name="topping3" value="" class="form-control" placeholder="Topping 3" disabled></li>
                 </ul>
             </div>
 
@@ -76,7 +133,7 @@
     </div>
 
 
-    <!-- Pizza ordering -->
+    </div>
     <div class="jumbotron">
         <h1 class="display-3">The Best Pizza in Downtown Charleston</h1>
         <p class="lead">Fresh, made-from-scratch dough. Healthful, artisanal ingredients on the assembly line. Inventive to classic. You decide. Blazing hot oven + dedicated pizzasmith + 180 seconds = fast-fired, perfectly crisp perfection.</p>

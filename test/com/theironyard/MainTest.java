@@ -14,7 +14,7 @@ import static org.junit.Assert.*;
 public class MainTest {
 
     public Connection startConnection() throws SQLException {
-        Connection conn = DriverManager.getConnection("jdbc:h2:./main");
+        Connection conn = DriverManager.getConnection("jdbc:h2:mem:test");
         Main.createTables(conn);
         return conn;
     }
@@ -50,5 +50,28 @@ public class MainTest {
             Integer toppingInt = results.getInt("topping_id");
             assertTrue(toppingInt != null);
         }
+    }
+
+    @Test
+    public void testSelectPizzas () throws SQLException {
+        Connection conn = startConnection();
+        Main.populateToppings(conn);
+        String size = "16";
+        String crust = "thin";
+        String sauce = "marinara";
+        String orderName = "Ben";
+        Toppings meat = new Toppings (0, "meat");
+        ArrayList<Toppings> toppings = new ArrayList<>();
+        toppings.add(meat);
+        Pizza pizza = new Pizza (size, crust, sauce, orderName, toppings);
+        int id = Main.insertPizza(conn, pizza);
+        Main.insertBuiltPizza(conn, toppings,id);
+
+        Main.selectPizzas(conn);
+
+        ArrayList<Pizza> pizzaTest = Main.selectPizzas(conn);
+
+        assertTrue(pizzaTest != null);
+
     }
 }

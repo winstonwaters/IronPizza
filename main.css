@@ -1,0 +1,8 @@
+.col-md-4 {
+  background-color: lightblue;
+  height:500px;
+}
+.col-md-8 {
+  background-color: lightgreen;
+  height: 500px;
+}

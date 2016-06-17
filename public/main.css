@@ -4,24 +4,49 @@
 }
 @font-face {
     font-family: TheWildThingsScript;
-    src: url("./TheWildThings/The Wild Things Script - Bold.otf");
+    src: url("./TheWildThingsScript/TheWildThingsScript.otf");
 }
 @font-face {
-    font-family: Whitney Light;
+    font-family: Whitney;
     src: url("./Whitney/Whitney/Whitney-Light.otf");
 }
-
-*{
-  
+* {
+    font-family: Whitney;
 }
-
-
 .col-md-4 {
-  background-color: lightblue;
-  height:500px;
-  border: 1px dashed black;
+    background-color: pink;
+    height: 500px;
+    border: 1px dashed black;
 }
 .col-md-8 {
-  background-color: lightgreen;
-  height: 500px;
+    background-color: lightgreen;
+    height: 500px;
+}
+
+/*navigation styling*/
+.navbar-header img {
+  margin-left: 720px;
+  vertical-align: bottom;
+  width: 170px;
+}
+
+
+/*footer*/
+.jumbotron {
+  margin: 3%;
+  background-color: white;
+}
+
+.jumbotron h1 {
+  max-width: 1202px;
+  font-size: 10rem;
+  font-family: TheWildThingsScript;
+}
+.jumbotron p {
+  line-height: 60%;
+  font-family: TheWildThings;
+  max-width: 992px;
+  margin-bottom: 15px;
+  font-size: 5rem;
+  font-weight: 200;
 }

@@ -1,10 +1,9 @@
 package com.theironyard;
 
+import org.h2.tools.Server;
 import org.junit.Test;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 
 import static org.junit.Assert.*;
@@ -15,7 +14,7 @@ import static org.junit.Assert.*;
 public class MainTest {
 
     public Connection startConnection() throws SQLException {
-        Connection conn = DriverManager.getConnection("jdbc:h2:mem:test");
+        Connection conn = DriverManager.getConnection("jdbc:h2:./main");
         Main.createTables(conn);
         return conn;
     }
@@ -34,5 +33,22 @@ public class MainTest {
     @Test
     public void testInsertBuiltPizza () throws SQLException {
         Connection conn = startConnection();
+        Main.populateToppings(conn);
+        int pizzaId = 1;
+        ArrayList<Toppings> toppings = new ArrayList<>();
+        Toppings meat = new Toppings(1, "meat");
+        Toppings veggie = new Toppings(2, "veggie");
+        Toppings cheese = new Toppings(3, "cheese");
+        toppings.add(meat);
+        toppings.add(veggie);
+        toppings.add(cheese);
+        Main.insertBuiltPizza(conn, toppings, pizzaId);
+
+        PreparedStatement stmt = conn.prepareStatement("SELECT * FROM builtpizza");
+        ResultSet results = stmt.executeQuery();
+        while (results.next()) {
+            Integer toppingInt = results.getInt("topping_id");
+            assertTrue(toppingInt != null);
+        }
     }
 }

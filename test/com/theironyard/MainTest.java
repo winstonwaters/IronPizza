@@ -50,6 +50,7 @@ public class MainTest {
             Integer toppingInt = results.getInt("topping_id");
             assertTrue(toppingInt != null);
         }
+        conn.close();
     }
 
     @Test
@@ -81,7 +82,7 @@ public class MainTest {
         Main.selectPizzas(conn);
 
         ArrayList<Pizza> pizzaTest = Main.selectPizzas(conn);
-
+        conn.close();
         assertTrue(pizzaTest != null);
 
     }

@@ -12,7 +12,7 @@ public class Main {
     public static void createTables(Connection conn) throws SQLException {
         Statement stmt = conn.createStatement();
         stmt.execute("CREATE TABLE IF NOT EXISTS users (id IDENTITY, username VARCHAR)");
-        stmt.execute("CREATE TABLE IF NOT EXISTS pizzas (id IDENTITY, size VARCHAR, crust VARCHAR, sauce VARCHAR)");
+        stmt.execute("CREATE TABLE IF NOT EXISTS pizzas (id IDENTITY, size VARCHAR, crust VARCHAR, sauce VARCHAR, ordername VARCHAR)");
         stmt.execute("CREATE TABLE IF NOT EXISTS toppings (id IDENTITY, topping VARCHAR)");
         stmt.execute("CREATE TABLE IF NOT EXISTS builtpizza (id IDENTITY, pizza_id INT, topping_id INT)");
     }
@@ -50,7 +50,7 @@ public class Main {
         stmt.setString(1, pizza.size);
         stmt.setString(2, pizza.crust);
         stmt.setString(3, pizza.sauce);
-        stmt.setInt(4, pizza.userId);
+        stmt.setString(4, pizza.orderName);
         stmt.execute();
 
         //returns inserted pizza's id
@@ -114,19 +114,35 @@ public class Main {
         PreparedStatement stmt = conn.prepareStatement("SELECT * FROM pizzas");
         ResultSet results = stmt.executeQuery();
         ArrayList<Pizza> pizzas = new ArrayList<>();
+        ArrayList<Toppings> toppings = new ArrayList<>();
+        Toppings topping = new Toppings();
         while (results.next()) {
             int id = results.getInt("id");
             String size = results.getString("size");
             String crust = results.getString("crust");
             String sauce = results.getString("sauce");
 
-            stmt = conn.prepareStatement("SELECT topping FROM pizzas INNER JOIN toppings ON pizzas.");
+            stmt = conn.prepareStatement("SELECT * FROM builtpizza INNER JOIN toppings ON builtpizza.toppings_id = toppings.id WHERE builtpizza.pizza_id =?");
+            stmt.setInt(1, id);
+            ResultSet resultsTop = stmt.executeQuery();
+            while (resultsTop.next()) {
+                int topId = results.getInt("toppings_id");
+                if (topId == 1) {
+                    topping = new Toppings(1, "meat");
+                }
+                else if (topId == 2) {
+                    topping = new Toppings(2, "veggie");
+                }
+                else if (topId == 3) {
+                    topping =  new Toppings(3, "cheese");
+                }
+                toppings.add(topping);
 
-            //remove later*****
-            ArrayList<Toppings> toppings = new ArrayList<>();
-            // remove ^^
+            }
 
-            Pizza p = new Pizza(id, size, crust, sauce, 0, toppings);
+
+
+            Pizza p = new Pizza(id, size, crust, sauce, "", toppings);
             pizzas.add(p);
         }
         return pizzas;

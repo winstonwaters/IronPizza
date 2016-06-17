@@ -30,4 +30,9 @@ public class MainTest {
         assertTrue(userList.size() > 0);
     }
 
+
+    @Test
+    public void testInsertBuiltPizza () throws SQLException {
+        Connection conn = startConnection();
+    }
 }

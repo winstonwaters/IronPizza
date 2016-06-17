@@ -14,6 +14,15 @@ public class Pizza {
     int userId;
     ArrayList<Toppings> topping = new ArrayList<>();
 
+    public Pizza(Integer id, String size, String crust, String sauce, int userId, ArrayList<Toppings> topping) {
+        this.id = id;
+        this.size = size;
+        this.crust = crust;
+        this.sauce = sauce;
+        this.userId = userId;
+        this.topping = topping;
+    }
+
     public Pizza(int userId) {
         this.userId = userId;
     }

@@ -55,7 +55,7 @@ public class MainTest {
     @Test
     public void testDeleteUser() throws SQLException {
         Connection conn = startConnection();
-        Pizza pizza = new Pizza(1, "16", "Stuffed", "Original", "Alice");
+        Pizza pizza = new Pizza("16", "Stuffed", "Original", "Alice");
         Main.insertPizza(conn, pizza);
         Main.deletePizza(conn, 1);
         ArrayList<Pizza> userArrayList = Main.selectPizzas(conn);

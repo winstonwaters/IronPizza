@@ -13,8 +13,17 @@ public class Main {
         Statement stmt = conn.createStatement();
         stmt.execute("CREATE TABLE IF NOT EXISTS users (id IDENTITY, username VARCHAR)");
         stmt.execute("CREATE TABLE IF NOT EXISTS pizzas (id IDENTITY, size VARCHAR, crust VARCHAR, sauce VARCHAR)");
-        stmt.execute("CREATE TABLE IF NOT EXISTS toppings (id IDENTITY, topping VARCHAR");
+        stmt.execute("CREATE TABLE IF NOT EXISTS toppings (id IDENTITY, topping VARCHAR)");
         stmt.execute("CREATE TABLE IF NOT EXISTS builtpizza (id IDENTITY, pizza_id INT, topping_id INT)");
+    }
+
+    public static void populateToppings(Connection conn) throws SQLException {
+        PreparedStatement stmt = conn.prepareStatement("INSERT INTO toppings VALUES(NULL, 'meat')");
+        stmt.execute();
+        stmt = conn.prepareStatement("INSERT INTO toppings VALUES(NULL, 'veggie')");
+        stmt.execute();
+        stmt = conn.prepareStatement("INSERT INTO toppings VALUES(NULL, 'cheese')");
+        stmt.execute();
     }
 
     public static void insertUser(Connection conn, User user) throws SQLException {
@@ -37,7 +46,6 @@ public class Main {
     }
 
     public static int insertPizza(Connection conn, Pizza pizza) throws SQLException {
-        // return int whenever Zach sends code
         PreparedStatement stmt = conn.prepareStatement("INSERT INTO pizzas VALUES (NULL, ?, ?, ?, ?)");
         stmt.setString(1, pizza.size);
         stmt.setString(2, pizza.crust);
@@ -61,24 +69,25 @@ public class Main {
         Toppings cheese = null;
 
         //select toppings method/get topping ids
-        PreparedStatement stmt1 = conn.prepareStatement("SELECT topping_id FROM toppings");
+        PreparedStatement stmt1 = conn.prepareStatement("SELECT * FROM toppings");
         ResultSet results = stmt1.executeQuery();
         while (results.next()) {
-            int toppingId = results.getInt("topping_id");
-            switch (toppingId) {
-                case 1:
+            String topping = results.getString("topping");
+            switch (topping) {
+                case ("meat"):
                     meat = new Toppings(1, "meat");
                     break;
-                case 2:
+                case ("veggie"):
                     veggie = new Toppings(2, "veggie");
                     break;
-                case 3:
+                case ("cheese"):
                     cheese = new Toppings(3, "cheese");
                     break;
             }
         }
             Integer toppingInt = null;
             int size = toppings.size();
+
         for (int i = 0; i<size; i++) {
             Toppings name = toppings.get(i);
             if (name.topping == meat.topping) {
@@ -130,6 +139,7 @@ public class Main {
         Server.createWebServer().start();
         Connection conn = DriverManager.getConnection("jdbc:h2:./main");
         createTables(conn);
+        populateToppings(conn);
 
         Spark.externalStaticFileLocation("public");
         Spark.init();

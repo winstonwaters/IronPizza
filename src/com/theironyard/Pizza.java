@@ -6,6 +6,15 @@ import java.util.ArrayList;
  * Created by Ben on 6/16/16.
  */
 public class Pizza {
+    int id;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     String size;
     String crust;
@@ -13,8 +22,8 @@ public class Pizza {
     String orderName;
     ArrayList<Toppings> topping = new ArrayList<>();
 
-    public Pizza(String size, String crust, String sauce, String orderName, ArrayList<Toppings> topping) {
-
+    public Pizza(int id, String size, String crust, String sauce, String orderName, ArrayList<Toppings> topping) {
+        this.id  = id;
         this.size = size;
         this.crust = crust;
         this.sauce = sauce;

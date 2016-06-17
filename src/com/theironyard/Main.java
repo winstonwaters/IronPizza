@@ -68,9 +68,6 @@ public class Main {
 
     public static void insertBuiltPizza(Connection conn, ArrayList<Toppings> toppings, int pizzaId) throws SQLException {
 
-
-        Toppings toppingTemp = new Toppings();
-
         //select toppings method/get topping ids
         PreparedStatement stmt1 = conn.prepareStatement("SELECT * FROM toppings");
         ResultSet results = stmt1.executeQuery();
@@ -90,16 +87,6 @@ public class Main {
                     stmt.execute();
                 }
             }
-
-
-
-
-
-
-
-
-
-
 
             /*
             switch (topping) {

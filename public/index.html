@@ -13,6 +13,7 @@
     <nav class="navbar navbar-default">
         <div class="container-fluid">
             <div class="navbar-header">
+                <img class="pizzaLogo" src="Images/PizzeriaDiFerro_Logo.png" alt="logo" />
                 <a class="navbar-brand" href="#" <img alt="Brand" src="Pizzeria di Ferro">
                 </a>
             </div>
@@ -22,99 +23,52 @@
     <!-- Main body -->
     <div class="row">
         <div class="col-md-4">
+          <h1>Custom Pizza</h1>
+          <!-- order name -->
             <div class="row">
-
                 <div class="col-lg-offset-1 col-lg-10">
-                    <div class="input-group">
+                    <div class="input-group" id="order">
+                        <input type="text" name="order" value="" class="form-control" placeholder="Order Name">
                         <span class="input-group-btn">
-                          <button class="btn btn-secondary" type="button">Hate it</button>
-                        </span>
-                        <input type="text" class="form-control" placeholder="Order Name">
-                        <span class="input-group-btn">
-                          <button class="btn btn-secondary" type="button">Love it</button>
+                          <button class="btn btn-secondary" type="button">Go!</button>
                         </span>
                     </div>
                 </div>
             </div>
-
+            <!-- pizza size -->
             <div class="row">
-
                 <div class="col-lg-offset-1 col-lg-10">
-                    <div class="input-group">
+                    <div class="input-group" id="size">
+                        <input type="text" name="size" value="" class="form-control" placeholder="Size">
                         <span class="input-group-btn">
-                            <button class="btn btn-secondary" type="button">Hate it</button>
-                          </span>
-                        <input type="text" class="form-control" placeholder="Pizza Size">
-                        <span class="input-group-btn">
-                            <button class="btn btn-secondary" type="button">Love it</button>
-                          </span>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-
-                <div class="col-lg-offset-1 col-lg-10">
-                    <div class="input-group">
-                        <span class="input-group-btn">
-                              <button class="btn btn-secondary" type="button">Hate it</button>
-                            </span>
-                        <input type="text" class="form-control" placeholder="Crust Type">
-                        <span class="input-group-btn">
-                              <button class="btn btn-secondary" type="button">Love it</button>
-                            </span>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-
-                <div class="col-lg-offset-1 col-lg-10">
-                    <div class="input-group">
-                        <span class="input-group-btn">
-                                <button class="btn btn-secondary" type="button">Hate it</button>
-                              </span>
-                        <input type="text" class="form-control" placeholder="Topping ONE">
-                        <span class="input-group-btn">
-                                <button class="btn btn-secondary" type="button">Love it</button>
-                              </span>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-
-                <div class="col-lg-offset-1 col-lg-10">
-                    <div class="input-group">
-                        <span class="input-group-btn">
-                          <button class="btn btn-secondary" type="button">Hate it</button>
-                        </span>
-                        <input type="text" class="form-control" placeholder="Order Name">
-                        <span class="input-group-btn">
-                          <button class="btn btn-secondary" type="button">Love it</button>
+                          <button class="btn btn-secondary" type="button">Go!</button>
                         </span>
                     </div>
                 </div>
             </div>
-            <!-- order and delete buttons -->
+
 
 
         </div>
 
         <div class="col-md-4">
-        
+
 
         </div>
         <div class="col-md-4">
-          <div class="col-lg-offset-1 col-lg-10">
-              <ul class="list-group">
-                  <li class="list-group-item">Cras justo odio</li>
-                  <li class="list-group-item">Dapibus ac facilisis in</li>
-                  <li class="list-group-item">Morbi leo risus</li>
-                  <li class="list-group-item">Porta ac consectetur ac</li>
-                  <li class="list-group-item">Vestibulum at eros</li>
-              </ul>
-          </div>
+            <div class="col-lg-offset-1 col-lg-10">
 
-          <button type="button" class="btn btn-primary btn-lg btn-block">Order Pizza!</button>
-          <button type="button" class="btn btn-secondary btn-lg btn-block">Delete Pizza :(</button>
+                <ul class="list-group">
+                    <li class="list-group-item">Cras justo odio</li>
+                    <li class="list-group-item">Dapibus ac facilisis in</li>
+                    <li class="list-group-item">Morbi leo risus</li>
+                    <li class="list-group-item">Porta ac consectetur ac</li>
+                    <li class="list-group-item">Vestibulum at eros</li>
+                </ul>
+            </div>
+
+            <button type="button" class="btn btn-primary btn-lg btn-block">Order Pizza!</button>
+            <button type="button" class="btn btn-secondary btn-lg btn-block">Delete Pizza :(</button>
 
 
         </div>
@@ -124,19 +78,22 @@
 
     <!-- Pizza ordering -->
     <div class="jumbotron">
-        <h1 class="display-3">Pizza, Pizza!</h1>
-        <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+        <h1 class="display-3">The Best Pizza in Downtown Charleston</h1>
+        <p class="lead">Fresh, made-from-scratch dough. Healthful, artisanal ingredients on the assembly line. Inventive to classic. You decide. Blazing hot oven + dedicated pizzasmith + 180 seconds = fast-fired, perfectly crisp perfection.</p>
         <hr class="m-y-2">
-        <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
-        <p class="lead">
-            <!-- <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a> -->
-        </p>
+        <p>Visit: 16 Princess St. Charleston, SC 29403</p>
+        <p>Call: (626) 584-5880</p>
+        <!-- <p class="lead">
+            <a class="btn btn-primary btn-lg" href="#" role="button">Call Us</a>
+        </p> -->
     </div>
 
 
     <script src="node_modules/jquery/dist/jquery.js" charset="utf-8"></script>
     <script src="node_modules/underscore/underscore.js" charset="utf-8"></script>
-    <script src="apps.js" charset="utf-8"></script>
+    <!-- <script src="apps.js" charset="utf-8"></script> -->
+    <script src="testclick.js" charset="utf-8"></script>
+
 </body>
 
 </html>

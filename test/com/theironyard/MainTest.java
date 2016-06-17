@@ -51,4 +51,38 @@ public class MainTest {
             assertTrue(toppingInt != null);
         }
     }
+
+    @Test
+    public void testDeleteUser() throws SQLException {
+        Connection conn = startConnection();
+        Pizza pizza = new Pizza("16", "Stuffed", "Original", "Alice");
+        Main.insertPizza(conn, pizza);
+        Main.deletePizza(conn, 1);
+        ArrayList<Pizza> userArrayList = Main.selectPizzas(conn);
+        conn.close();
+        assertTrue(userArrayList.size() == 0);
+    }
+
+    @Test
+    public void testSelectPizzas () throws SQLException {
+        Connection conn = startConnection();
+        Main.populateToppings(conn);
+        String size = "16";
+        String crust = "thin";
+        String sauce = "marinara";
+        String orderName = "Ben";
+        Toppings meat = new Toppings (0, "meat");
+        ArrayList<Toppings> toppings = new ArrayList<>();
+        toppings.add(meat);
+        Pizza pizza = new Pizza (size, crust, sauce, orderName, toppings);
+        int id = Main.insertPizza(conn, pizza);
+        Main.insertBuiltPizza(conn, toppings,id);
+
+        Main.selectPizzas(conn);
+
+        ArrayList<Pizza> pizzaTest = Main.selectPizzas(conn);
+
+        assertTrue(pizzaTest != null);
+
+    }
 }

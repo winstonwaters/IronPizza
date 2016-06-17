@@ -7,15 +7,14 @@ import java.util.ArrayList;
  */
 public class Pizza {
 
-    Integer id;
     String size;
     String crust;
     String sauce;
     String orderName;
     ArrayList<Toppings> topping = new ArrayList<>();
 
-    public Pizza(Integer id, String size, String crust, String sauce, String orderName, ArrayList<Toppings> topping) {
-        this.id = id;
+    public Pizza(String size, String crust, String sauce, String orderName, ArrayList<Toppings> topping) {
+
         this.size = size;
         this.crust = crust;
         this.sauce = sauce;
@@ -30,8 +29,8 @@ public class Pizza {
     public Pizza() {
     }
 
-    public Pizza(Integer id, String orderName, String size, String crust, String sauce) {
-        this.id = id;
+    public Pizza(String orderName, String size, String crust, String sauce) {
+
         this.size = size;
         this.crust = crust;
         this.sauce = sauce;
@@ -39,15 +38,6 @@ public class Pizza {
 
     }
 
-
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
 
     public String getSize() {
         return size;

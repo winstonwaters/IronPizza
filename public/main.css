@@ -1,4 +1,3 @@
-
 @font-face {
     font-family: TheWildThings;
     src: url("./TheWildThings/The Wild Things - Bold.otf");
@@ -17,7 +16,7 @@
 }
 .col-md-4 {
     background-color: pink;
-    height: 500px;
+    height: 600px;
     border: 1px dashed black;
 }
 .col-md-8 {
@@ -26,46 +25,116 @@
 }
 
 /*navigation styling*/
+
 .navbar-header img {
-  margin-left: 720px;
-  vertical-align: bottom;
-  width: 170px;
+    margin: 0 auto;
+    vertical-align: top;
+    max-width: 170px;
 }
 
+/*ordering container*/
+
+.ordering-container {
+    margin-bottom: -70px;
+    padding: 0;
+}
+.ordering-container h1 {
+    text-align: center;
+    font-size: 7rem;
+    font-family: TheWildThingsScript;
+}
+
+.orderButton {
+  width: 100%;
+  padding: 13px;
+  font-family: TheWildThings;
+  background-color: gray;
+  padding-bottom: 23px;
+  color: white;
+  border-radius: 1px;
+  border: 1px white;
+  font-size: 6.2rem;
+  line-height: 2rem;
+}
+
+/*middle container*/
+
+.list-group-item h3 {
+    font-family: TheWildThingsScript;
+    line-height: 20%;
+    font-size: 3rem;
+}
+.list-group-item p {
+    line-height: 40%;
+    size: 7rem;
+    font-family: TheWildThings;
+}
 
 /*footer*/
-.jumbotron {
-  color: #3C3C3C;
-  margin: 3%;
-  background-color: white;
-}
 
+.jumbotron {
+    color: #3C3C3C;
+    margin: 3%;
+    background-color: white;
+}
 .jumbotron h1 {
-  max-width: 1202px;
-  font-size: 10rem;
-  font-family: TheWildThingsScript;
+    max-width: 1202px;
+    font-size: 10rem;
+    font-family: TheWildThingsScript;
 }
 .jumbotron p {
-  line-height: 60%;
-  font-family: TheWildThings;
-  max-width: 992px;
-  margin-bottom: 15px;
-  font-size: 5rem;
-  font-weight: 200;
+    line-height: 60%;
+    font-family: TheWildThings;
+    max-width: 992px;
+    margin-bottom: 15px;
+    font-size: 5rem;
+    font-weight: 200;
 }
 .jumbotron a {
-  color: #3C3C3C;
-  line-height: 60%;
-  font-family: TheWildThings;
-  max-width: 992px;
-  margin-bottom: 15px;
-  font-size: 5rem;
-  font-weight: 200;
+    color: #3C3C3C;
+    line-height: 60%;
+    font-family: TheWildThings;
+    max-width: 992px;
+    margin-bottom: 15px;
+    font-size: 5rem;
+    font-weight: 200;
 }
 .jumbotron a:hover {
-  color: #FF8300;
+    color: #FF8300;
 }
 
-.hidden {
+/*order completed dancing pizza*/
+.jumbotron a {
+    font-weight: 100;
+    padding-bottom: 1%;
+    border: none;
+    background-color: white;
+    color: #3C3C3C;
+    margin-left: 34%;
+    justify-content: space-around;
+    color: #3C3C3C;
+    line-height: 60%;
+    font-family: TheWildThings;
+    max-width: 992px;
+    margin-bottom: 15px;
+    font-size: 5rem;
+    font-weight: 200;
+}
+.jumbotron a:hover {
+    border: none;
+    background-color: #3C3C3C;
+    color: white;
+}
+.jumbotron img {
+    margin-top: -40px;
+    margin-left: 20%;
+    vertical-align: middle;
+}
+/*
+.dancing {
   display: none;
+}*/
+
+.hidden {
+    display: none;
 }

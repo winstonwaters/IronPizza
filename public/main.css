@@ -1,3 +1,21 @@
+@font-face {
+    font-family: TheWildThings;
+    src: url("./TheWildThings/The Wild Things - Bold.otf");
+}
+@font-face {
+    font-family: TheWildThingsScript;
+    src: url("./TheWildThings/The Wild Things Script - Bold.otf");
+}
+@font-face {
+    font-family: Whitney Light;
+    src: url("./Whitney/Whitney/Whitney-Light.otf");
+}
+
+*{
+  
+}
+
+
 .col-md-4 {
   background-color: lightblue;
   height:500px;

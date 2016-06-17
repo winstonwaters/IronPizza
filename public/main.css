@@ -11,10 +11,15 @@
     src: url("./Whitney/Whitney/Whitney-Light.otf");
 }
 
+*{
+  
+}
+
 
 .col-md-4 {
   background-color: lightblue;
   height:500px;
+  border: 1px dashed black;
 }
 .col-md-8 {
   background-color: lightgreen;

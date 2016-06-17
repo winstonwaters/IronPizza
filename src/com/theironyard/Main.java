@@ -1,5 +1,6 @@
 package com.theironyard;
 
+import jodd.json.JsonParser;
 import jodd.json.JsonSerializer;
 import org.h2.tools.Server;
 import spark.Spark;
@@ -167,6 +168,17 @@ public class Main {
                     ArrayList<Pizza> pizzas = selectPizzas(conn);
                     JsonSerializer s = new JsonSerializer();
                     return s.serialize(pizzas);
+                }
+        );
+
+        Spark.post(
+                "/pizza",
+                (request, response) -> {
+                    String body = request.body();
+                    JsonParser p = new JsonParser();
+                    Pizza pizza = p.parse(body, Pizza.class);
+                    insertPizza(conn, pizza);
+                    return "";
                 }
         );
     }

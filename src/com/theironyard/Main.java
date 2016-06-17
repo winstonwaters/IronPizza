@@ -123,7 +123,7 @@ public class Main {
             String crust = results.getString("crust");
             String sauce = results.getString("sauce");
 
-            stmt = conn.prepareStatement("SELECT * FROM builtpizza INNER JOIN toppings ON builtpizza.toppings_id = toppings.id WHERE builtpizza.pizza_id =?");
+            stmt = conn.prepareStatement("SELECT * FROM builtpizza INNER JOIN toppings ON builtpizza.topping_id = toppings.id WHERE builtpizza.pizza_id =?");
             stmt.setInt(1, id);
             ResultSet resultsTop = stmt.executeQuery();
             while (resultsTop.next()) {
@@ -150,7 +150,15 @@ public class Main {
     }
 
 
+    public static void deletePizza(Connection conn, int id) throws SQLException {
+        PreparedStatement stmt = conn.prepareStatement("DELETE FROM pizzas WHERE id = ?");
+        stmt.setInt(1, id);
+        stmt.execute();
 
+        stmt = conn.prepareStatement("DELETE FROM builtpizza WHERE pizza_id = ?");
+        stmt.setInt(1, id);
+        stmt.execute();
+    }
 
     public static void main(String[] args) throws SQLException {
         Server.createWebServer().start();
@@ -178,6 +186,15 @@ public class Main {
                     JsonParser p = new JsonParser();
                     Pizza pizza = p.parse(body, Pizza.class);
                     insertPizza(conn, pizza);
+                    return "";
+                }
+        );
+
+        Spark.delete(
+                "/pizza/:id",
+                (request, response) -> {
+                    int id = Integer.valueOf(request.params(":id"));
+                    deletePizza(conn, id);
                     return "";
                 }
         );

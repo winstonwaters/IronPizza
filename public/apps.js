@@ -2,19 +2,36 @@ $(document).ready(function(){
   // pizza.init();
 })
 
-var pizza = {
+var pizzaPage = {
   url: "",
   pizzaArr: [],
   intit: function () {
-    pizza.events();
-    pizza.styling();
+    pizzaPage.events();
+    pizzaPage.styling();
   },
   styling: function () {
-    pizza.read();
+    pizzaPage.read();
   },
 
 
   events: function () {
+    $('form').on('submit', function(event) {
+      event.preventDefault();
+      var pizzaToSave = {
+        name: $('input[name="orderList"]').val(),
+        size: $('input[name="sizeList"]').val(),
+        crust: $('input[name="long"]').val(),
+        sauce: $('input[name="desc"]').val(),
+        topping1: $('input[name="desc"]').val(),
+        topping2: $('input[name="desc"]').val(),
+        topping3: $('input[name="desc"]').val(),
+      }
+      // debugger
+      console.log(pizzaToSave);
+      pizzaPage.create(JSON.stringify(pizzaToSave));
+
+      $('input').val("");
+    })
 
   },
 

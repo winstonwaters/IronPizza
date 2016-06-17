@@ -152,14 +152,11 @@ public class Main {
 
             }
 
-
-
             Pizza p = new Pizza(size, crust, sauce, "", toppings);
             pizzas.add(p);
         }
         return pizzas;
     }
-
 
     public static void deletePizza(Connection conn, int id) throws SQLException {
         PreparedStatement stmt = conn.prepareStatement("DELETE FROM pizzas WHERE id = ?");

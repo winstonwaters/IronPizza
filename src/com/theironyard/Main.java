@@ -12,6 +12,8 @@ public class Main {
 
     public static void createTables(Connection conn) throws SQLException {
         Statement stmt = conn.createStatement();
+        Statement stmtdrop = conn.createStatement();
+        stmtdrop.execute("DROP TABLE IF EXISTS toppings");
         stmt.execute("CREATE TABLE IF NOT EXISTS users (id IDENTITY, username VARCHAR)");
         stmt.execute("CREATE TABLE IF NOT EXISTS pizzas (id IDENTITY, size VARCHAR, crust VARCHAR, sauce VARCHAR, ordername VARCHAR)");
         stmt.execute("CREATE TABLE IF NOT EXISTS toppings (id IDENTITY, topping VARCHAR)");
@@ -19,6 +21,8 @@ public class Main {
     }
 
     public static void populateToppings(Connection conn) throws SQLException {
+
+
         PreparedStatement stmt = conn.prepareStatement("INSERT INTO toppings VALUES(NULL, 'meat')");
         stmt.execute();
         stmt = conn.prepareStatement("INSERT INTO toppings VALUES(NULL, 'veggie')");
@@ -65,24 +69,48 @@ public class Main {
     public static void insertBuiltPizza(Connection conn, ArrayList<Toppings> toppings, int pizzaId) throws SQLException {
 
 
-        Toppings meat = null;
-        Toppings veggie = null;
-        Toppings cheese = null;
+        Toppings toppingTemp = new Toppings();
 
         //select toppings method/get topping ids
         PreparedStatement stmt1 = conn.prepareStatement("SELECT * FROM toppings");
         ResultSet results = stmt1.executeQuery();
         while (results.next()) {
-            String topping = results.getString("topping");
+            int toppingId = results.getInt("id");
+            String name = results.getString("topping");
+
+            int size = toppings.size();
+
+            for (int i = 0; i <size; i++) {
+                Toppings temp = toppings.get(i);
+                if (name.equals(temp.topping)) {
+                    PreparedStatement stmt = conn.prepareStatement("INSERT INTO builtpizza VALUES (NULL, ?, ?)");
+
+                    stmt.setInt(1, pizzaId);
+                    stmt.setInt(2, toppingId);
+                    stmt.execute();
+                }
+            }
+
+
+
+
+
+
+
+
+
+
+
+            /*
             switch (topping) {
                 case ("meat"):
-                    meat = new Toppings(1, "meat");
+                    toppingTemp = new Toppings(1, "meat");
                     break;
                 case ("veggie"):
-                    veggie = new Toppings(2, "veggie");
+                    toppingTemp = new Toppings(2, "veggie");
                     break;
                 case ("cheese"):
-                    cheese = new Toppings(3, "cheese");
+                    toppingTemp = new Toppings(3, "cheese");
                     break;
             }
         }
@@ -91,21 +119,17 @@ public class Main {
 
         for (int i = 0; i<size; i++) {
             Toppings name = toppings.get(i);
-            if (name.topping == meat.topping) {
+            if (name.topping.equals(toppingTemp.topping)) {
                 toppingInt = 1;
             }
-            else if (name.topping == veggie.topping) {
+            else if (name.topping.equals(toppingTemp.topping)) {
                 toppingInt = 2;
             }
-            else if (name.topping == cheese.topping) {
+            else if (name.topping == toppingTemp.topping) {
                 toppingInt = 3;
-            }
+            }*/
 
-            PreparedStatement stmt = conn.prepareStatement("INSERT INTO builtpizza VALUES (NULL, ?, ?)");
 
-            stmt.setInt(1, pizzaId);
-            stmt.setInt(2, toppingInt);
-            stmt.execute();
         }
     }
 
@@ -127,7 +151,7 @@ public class Main {
             stmt.setInt(1, id);
             ResultSet resultsTop = stmt.executeQuery();
             while (resultsTop.next()) {
-                int topId = results.getInt("toppings_id");
+                int topId = results.getInt("id");
                 if (topId == 1) {
                     topping = new Toppings(1, "meat");
                 }
@@ -143,7 +167,7 @@ public class Main {
 
 
 
-            Pizza p = new Pizza(id, size, crust, sauce, "", toppings);
+            Pizza p = new Pizza(size, crust, sauce, "", toppings);
             pizzas.add(p);
         }
         return pizzas;

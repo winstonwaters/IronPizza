@@ -65,6 +65,7 @@ public class Main {
     }
 
 
+    //select * from toppings inner join pWT on pWT.id = toppings.id where pWT.pizza_id
 
 
     public static void main(String[] args) throws SQLException {

@@ -9,10 +9,11 @@
 }
 @font-face {
     font-family: Whitney;
-    src: url("./Whitney/Whitney/Whitney-Light.otf");
+    src: url("./Whitney/Whitney-Light.otf");
 }
 * {
     font-family: Whitney;
+    color: #3C3C3C;
 }
 .col-md-4 {
     background-color: pink;
@@ -34,6 +35,7 @@
 
 /*footer*/
 .jumbotron {
+  color: #3C3C3C;
   margin: 3%;
   background-color: white;
 }
@@ -50,4 +52,20 @@
   margin-bottom: 15px;
   font-size: 5rem;
   font-weight: 200;
+}
+.jumbotron a {
+  color: #3C3C3C;
+  line-height: 60%;
+  font-family: TheWildThings;
+  max-width: 992px;
+  margin-bottom: 15px;
+  font-size: 5rem;
+  font-weight: 200;
+}
+.jumbotron a:hover {
+  color: #FF8300;
+}
+
+.hidden {
+  display: none;
 }

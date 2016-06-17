@@ -69,7 +69,7 @@ public class Main {
     public static void insertBuiltPizza(Connection conn, ArrayList<Toppings> toppings, int pizzaId) throws SQLException {
 
 
-        Toppings toppingTemp = new Toppings();
+
 
         //select toppings method/get topping ids
         PreparedStatement stmt1 = conn.prepareStatement("SELECT * FROM toppings");
@@ -179,8 +179,12 @@ public class Main {
         stmt.setInt(1, id);
         stmt.execute();
 
-        stmt = conn.prepareStatement("DELETE FROM builtpizza WHERE pizza_id = ?");
-        stmt.setInt(1, id);
+        deleteBuiltPizza(conn, id);
+    }
+
+    public static void deleteBuiltPizza(Connection conn, int pizzaId) throws SQLException {
+        PreparedStatement stmt = conn.prepareStatement("DELETE FROM built WHERE pizza_id = ?");
+        stmt.setInt(1, pizzaId);
         stmt.execute();
     }
 

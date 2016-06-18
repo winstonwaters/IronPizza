@@ -1,7 +1,7 @@
-$('#order').on('click', function(event) {
+$('.leftside-order').on('submit', function(event) {
   event.preventDefault();
-  console.log("test",$('input[name="order"]').val());
-  $('input[name="orderList"]').val($('input[name="order"]').val());
+  console.log("click");
+  $('.order-group input[name="order-list"]').val($('input[name="order"]').val());
   $('input[name="order"]').val("");
 })
 $('#size').on('click', function(event) {

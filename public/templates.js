@@ -1,17 +1,11 @@
 var pizzaTmpls = {
-  sizeTmpl: `
-    <div class="size" data-id= <%= id %> >
-    <h3> <%= size %> </h3>
-    </div>
-   `,
-   crustTmpl: `
-   <div class="crust" data-id= <%= id %> >
-   <h3> <%= crust %> </h3>
-   </div>
-   `,
-   sauceTmpl: `
-   <div class="sauce" data-id= <%= id %> >
-   <h3> <%= sauce %> </h3>
-   </div>
-    `
+  myPizza:`
+    <li> <%= ordername %> </li>
+    <li> <%= size %> </li>
+    <li> <%= crust %> </li>
+    <li> <%= sauce %> </li>
+    <li> <%= topping1 %> </li>
+    <li> <%= topping2 %> </li>
+    <li> <%= topping3 %> </li>
+   `
 }

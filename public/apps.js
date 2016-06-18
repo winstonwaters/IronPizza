@@ -1,22 +1,22 @@
 $(document).ready(function() {
-    // pizza.init();
+    pizza.init();
 })
 
 var pizzaPage = {
 
   url: "http://tiny-tiny.herokuapp.com/collections/ironPizza",
   pizzaArr: [],
-  intit: function () {
+  init: function () {
     pizzaPage.events();
     pizzaPage.styling();
   },
   styling: function () {
-    pizzaPage.read();
+    pizzaPage.readPizza();
   },
 
 
   events: function () {
-    $(".order-group").on('submit', function(event) {
+    $(".orderButton").on('submit', function(event) {
       event.preventDefault();
       console.log("click");
       var pizzaToSave = {
@@ -30,7 +30,6 @@ var pizzaPage = {
       }
       // debugger
       console.log(pizzaToSave);
-      pizzaPage.create(JSON.stringify(pizzaToSave));
 
       $('input').val("");
     })
@@ -38,12 +37,12 @@ var pizzaPage = {
   },
 
 
-  createPizza: function(element) {
+  createPizza: function(pizzaToSave) {
     $.ajax({
-      contentType: "application/json; charset=utf-8",
-      url: "/pizza",
+      // contentType: "application/json; charset=utf-8",
+      url: pizzaPage.url,
       method:'POST',
-      data: element,
+      data: pizzaToSave,
       success: function(data) {
         console.log("yes!", data);
 
@@ -70,7 +69,7 @@ var pizzaPage = {
 
   updatePizza: function(data) {
     $.ajax({
-      url: pizza.url,
+      url: pizza.url + '/' + 'pizzaToSave',
       method:'PUT',
       data: data,
       success: function(data) {

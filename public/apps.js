@@ -1,5 +1,4 @@
 $(document).ready(function() {
-<<<<<<< HEAD
     pizzaPage.init();
 })
 
@@ -43,6 +42,12 @@ var pizzaPage = {
 
             // $('input').val("");
         })
+        //delete pizza
+        $("#cancel").on("click", function(event){
+          event.preventDefault();
+          var pizzaID = $(this).children().data('id');
+          pizzaPage.deletePizza(pizzaID);
+        });
 
     },
 
@@ -55,7 +60,7 @@ var pizzaPage = {
             data: pizzaToSave,
             success: function(data) {
                 console.log("yes! created", data);
-                // pizzaPage.readPizza();
+                pizzaPage.readPizza();
             },
             error: function() {
                 console.error("create error", err);
@@ -69,9 +74,10 @@ var pizzaPage = {
             method: 'GET',
             success: function(data) {
                 console.log("yes! read", data);
+                $('#cancel').html("");
                 data.forEach(function(element, idx) {
                     var pizzaHtmlStr = pizzaPage.htmlGenerator(pizzaTmpls.myPizza, element)
-                    $('.chat-window').append(pizzaHtmlStr);
+                    $('#cancel').append(pizzaHtmlStr);
                     pizzaPage.pizzaArr.push(data);
 
                 });
@@ -83,13 +89,14 @@ var pizzaPage = {
         })
     },
 
-    updatePizza: function(data) {
+    updatePizza: function(pizzaArr) {
         $.ajax({
-            url: pizza.url,
+            url: pizzaPage.url,
             method: 'PUT',
-            data: data,
+            data: pizzaArr,
             success: function(data) {
                 console.log("yes! update", data);
+                pizzaPage.readPizza();
 
             },
             error: function() {
@@ -99,13 +106,14 @@ var pizzaPage = {
     },
 
     deletePizza: function(pizzaID) {
-        var deleteOrder = pizza.url + '/' + pizzaID;
+        var deleteOrder = pizzaPage.url + '/' + pizzaID;
         $.ajax({
             url: deleteOrder,
             method: 'DELETE',
-            success: function(data) {
-                console.log("yes! deleted", data);
-
+            success: function() {
+                console.log("yes! deleted" );
+                console.log(deleteOrder);
+                pizzaPage.readPizza();
             },
             error: function() {
                 console.error("delete error", err);

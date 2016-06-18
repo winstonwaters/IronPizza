@@ -1,5 +1,4 @@
 $(document).ready(function() {
-<<<<<<< HEAD
     pizzaPage.init();
 })
 
@@ -55,7 +54,7 @@ var pizzaPage = {
             data: pizzaToSave,
             success: function(data) {
                 console.log("yes! created", data);
-                // pizzaPage.readPizza();
+                pizzaPage.readPizza();
             },
             error: function() {
                 console.error("create error", err);
@@ -71,7 +70,7 @@ var pizzaPage = {
                 console.log("yes! read", data);
                 data.forEach(function(element, idx) {
                     var pizzaHtmlStr = pizzaPage.htmlGenerator(pizzaTmpls.myPizza, element)
-                    $('.chat-window').append(pizzaHtmlStr);
+                    $('.final-order').append(pizzaHtmlStr);
                     pizzaPage.pizzaArr.push(data);
 
                 });

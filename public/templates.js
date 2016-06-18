@@ -1,6 +1,6 @@
 var pizzaTmpls = {
   myPizza:`
-    <li> <%= ordername %> </li>
+    <li> <%= name %> </li>
     <li> <%= size %> </li>
     <li> <%= crust %> </li>
     <li> <%= sauce %> </li>

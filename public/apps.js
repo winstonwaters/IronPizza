@@ -1,5 +1,5 @@
-$(document).ready(function(){
-  // pizza.init();
+$(document).ready(function() {
+    // pizza.init();
 })
 
 var pizzaPage = {
@@ -96,5 +96,7 @@ var pizzaPage = {
       }
     })
   },
+
+
 
 }

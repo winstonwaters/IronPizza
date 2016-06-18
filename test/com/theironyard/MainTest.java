@@ -14,7 +14,7 @@ import static org.junit.Assert.*;
 public class MainTest {
 
     public Connection startConnection() throws SQLException {
-        Connection conn = DriverManager.getConnection("jdbc:h2:./main");
+        Connection conn = DriverManager.getConnection("jdbc:h2:mem:test");
         Main.createTables(conn);
         return conn;
     }
@@ -50,6 +50,7 @@ public class MainTest {
             Integer toppingInt = results.getInt("topping_id");
             assertTrue(toppingInt != null);
         }
+        conn.close();
     }
 
     @Test
@@ -67,6 +68,7 @@ public class MainTest {
     public void testSelectPizzas () throws SQLException {
         Connection conn = startConnection();
         Main.populateToppings(conn);
+
         String size = "16";
         String crust = "thin";
         String sauce = "marinara";
@@ -74,15 +76,41 @@ public class MainTest {
         Toppings meat = new Toppings (0, "meat");
         ArrayList<Toppings> toppings = new ArrayList<>();
         toppings.add(meat);
-        Pizza pizza = new Pizza (size, crust, sauce, orderName, toppings);
+        Pizza pizza = new Pizza (1, size, crust, sauce, orderName, toppings);
         int id = Main.insertPizza(conn, pizza);
         Main.insertBuiltPizza(conn, toppings,id);
 
         Main.selectPizzas(conn);
 
         ArrayList<Pizza> pizzaTest = Main.selectPizzas(conn);
-
+        conn.close();
         assertTrue(pizzaTest != null);
 
+    }
+
+    @Test
+    public void testUpdatePizza () throws SQLException {
+        Connection conn = startConnection();
+        Main.populateToppings(conn);
+        String size = "16";
+        String crust = "thin";
+        String sauce = "marinara";
+        String orderName = "Ben";
+        Toppings meat = new Toppings (0, "meat");
+        ArrayList<Toppings> toppings = new ArrayList<>();
+        toppings.add(meat);
+        Pizza pizza = new Pizza (1, size, crust, sauce, orderName, toppings);
+        int id = Main.insertPizza(conn, pizza);
+
+        Toppings veggie = new Toppings (0, "veggies");
+        toppings = new ArrayList<>();
+        toppings.add(veggie);
+        Pizza pizza2 = new Pizza (id, "14", "thick", "pesto", "Dell", toppings);
+        Main.updatePizza(conn, pizza2);
+
+
+        ArrayList<Pizza> pizzaTest = Main.selectPizzas(conn);
+        conn.close();
+        assertTrue(pizzaTest.get(0).crust.equals("thick"));
     }
 }

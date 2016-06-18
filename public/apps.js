@@ -3,7 +3,7 @@ $(document).ready(function(){
 })
 
 var pizzaPage = {
-  url: "",
+  url: "/pizza",
   pizzaArr: [],
   intit: function () {
     pizzaPage.events();
@@ -15,16 +15,17 @@ var pizzaPage = {
 
 
   events: function () {
-    $('form').on('submit', function(event) {
+    $(".order-group").on('submit', function(event) {
       event.preventDefault();
+      console.log("click");
       var pizzaToSave = {
-        name: $('input[name="orderList"]').val(),
-        size: $('input[name="sizeList"]').val(),
-        crust: $('input[name="long"]').val(),
-        sauce: $('input[name="desc"]').val(),
-        topping1: $('input[name="desc"]').val(),
-        topping2: $('input[name="desc"]').val(),
-        topping3: $('input[name="desc"]').val(),
+        name: $('.order-group input[name="order-list"]').val(),
+        size: $('input[name="size-list"]').val(),
+        crust: $('input[name="crust-list"]').val(),
+        sauce: $('input[name="sauce-list"]').val(),
+        topping1: $('input[name="topping1-list"]').val(),
+        topping2: $('input[name="topping2-list"]').val(),
+        topping3: $('input[name="topping3-list"]').val(),
       }
       // debugger
       console.log(pizzaToSave);
@@ -38,7 +39,8 @@ var pizzaPage = {
 
   createPizza: function(element) {
     $.ajax({
-      url: pizza.url,
+      contentType: "application/json; charset=utf-8",
+      url: "/pizza",
       method:'POST',
       data: element,
       success: function(data) {
@@ -53,7 +55,7 @@ var pizzaPage = {
 
   readPizza: function() {
     $.ajax({
-      url: pizza.url,
+      url: "/pizza",
       method:'GET',
       success: function(data) {
         console.log("yes!", data);

@@ -13,8 +13,8 @@
     <nav class="navbar navbar-default">
         <div class="container-fluid">
             <div class="navbar-header">
-                    <img class="pizzaLogo" src="Images/PizzeriaDiFerro_Logo.png" alt="logo" />
-                    <a class="navbar-brand" href="#" <img alt="Brand" src="Pizzeria di Ferro"></a>
+                <a href="#"><img class="pizzaLogo" src="Images/PizzeriaDiFerro_Logo.png" alt="logo" /></a>
+                <a class="navbar-brand" href="#" <img alt="Brand" src="Pizzeria di Ferro"></a>
             </div>
         </div>
     </nav>
@@ -23,7 +23,7 @@
     <div class="ordering-container">
 
 
-        <div class="row">
+        <div class="row leftside-order">
             <div class="col-md-4">
                 <h1>Custom Pizza</h1>
                 <!-- order name -->
@@ -32,7 +32,7 @@
                         <div class="input-group" id="order">
                             <input type="text" name="order" value="" class="form-control" placeholder="Order Name">
                             <span class="input-group-btn">
-                          <button class="btn btn-secondary" type="button">Go!</button>
+                          <button type="submit" class="btn btn-secondary" >Go!</button>
                         </span>
                         </div>
                     </div>
@@ -135,6 +135,7 @@
         </div>
 
         <form class="col-md-4 order-group">
+          <h1>Your Order</h1>
             <div class="col-lg-offset-1 col-lg-10">
 
                 <ul class="list-group">
@@ -158,17 +159,23 @@
     </div>
 
     <!--Dancing Pizza-->
-    <div class="jumbotron hidden">
+    <div class="jumbotron pizza">
       <div class='container'>
-      <h1>Your pizza order is on it's way!</h1>
-      <img class="dancingPizza" src="Images/pizza.gif" alt="gif" />
-      <p><a class="btn btn-primary btn-lg" href="#" role="button">Cancel Order</a></p>
-      </div>
+        <div class="row dance">
+          <h1>Your pizza order is on it's way!</h1>
+          <div class="col-md-6"><img class="dancingPizza" src="Images/pizza.gif" alt="gif" />
+          </div>
 
+          <div class="col-md-6" id="cancel">
+            
+          </div>
+        </div>
+      </div>
     </div>
 
 
-    <div class="jumbotron">
+
+    <div class="jumbotron footer">
         <h1 class="display-3">The Best Pizza in Downtown Charleston</h1>
         <p class="lead">Fresh, made-from-scratch dough. Healthful, artisanal ingredients on the assembly line. Inventive to classic. You decide. Blazing hot oven + dedicated pizzasmith + 180 seconds = fast-fired, perfectly crisp perfection.</p>
         <hr class="m-y-2">
@@ -181,8 +188,11 @@
 
     <script src="node_modules/jquery/dist/jquery.js" charset="utf-8"></script>
     <script src="node_modules/underscore/underscore.js" charset="utf-8"></script>
-    <!-- <script src="apps.js" charset="utf-8"></script> -->
-    <script src="testclick.js" charset="utf-8"></script>
+
+    <script src="templates.js" charset="utf-8"></script>
+
+    <script src="apps.js" charset="utf-8"></script>
+    <!-- <script src="testclick.js" charset="utf-8"></script> -->
 
 </body>
 

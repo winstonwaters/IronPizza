@@ -15,7 +15,7 @@ public class Main {
         Statement stmtdrop = conn.createStatement();
         stmtdrop.execute("DROP TABLE IF EXISTS toppings");
         stmt.execute("CREATE TABLE IF NOT EXISTS users (id IDENTITY, username VARCHAR)");
-        stmt.execute("CREATE TABLE IF NOT EXISTS pizzas (id IDENTITY, size VARCHAR, crust VARCHAR, sauce VARCHAR, ordername VARCHAR)");
+        stmt.execute("CREATE TABLE IF NOT EXISTS pizzas (id IDENTITY, ordername VARCHAR, size VARCHAR, crust VARCHAR, sauce VARCHAR)");
         stmt.execute("CREATE TABLE IF NOT EXISTS toppings (id IDENTITY, topping VARCHAR)");
         stmt.execute("CREATE TABLE IF NOT EXISTS builtpizza (id IDENTITY, pizza_id INT, topping_id INT)");
     }
@@ -80,10 +80,11 @@ public class Main {
 
     public static int insertPizza(Connection conn, Pizza pizza) throws SQLException {
         PreparedStatement stmt = conn.prepareStatement("INSERT INTO pizzas VALUES (NULL, ?, ?, ?, ?)");
-        stmt.setString(1, pizza.size);
-        stmt.setString(2, pizza.crust);
-        stmt.setString(3, pizza.sauce);
-        stmt.setString(4, pizza.orderName);
+        stmt.setString(1, pizza.orderName);
+        stmt.setString(2, pizza.size);
+        stmt.setString(3, pizza.crust);
+        stmt.setString(4, pizza.sauce);
+
         stmt.execute();
 
         //returns inserted pizza's id
@@ -258,10 +259,10 @@ public class Main {
 
     public static void updatePizza (Connection conn, Pizza pizza) throws SQLException {
         PreparedStatement stmt = conn.prepareStatement("UPDATE pizzas SET size = ?, crust = ?, sauce = ?, ordername = ? WHERE id = ?");
-        stmt.setString(1, pizza.size);
-        stmt.setString(2, pizza.crust);
-        stmt.setString(3, pizza.sauce);
-        stmt.setString(4, pizza.orderName);
+        stmt.setString(1, pizza.orderName);
+        stmt.setString(2, pizza.size);
+        stmt.setString(3, pizza.crust);
+        stmt.setString(4, pizza.sauce);
         stmt.setInt(5, pizza.id);
         stmt.execute();
 

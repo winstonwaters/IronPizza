@@ -73,7 +73,7 @@ public class MainTest {
         String crust = "thin";
         String sauce = "marinara";
         String orderName = "Ben";
-        Toppings meat = new Toppings (0, "meat");
+        Toppings meat = new Toppings (1, "pepperoni");
         ArrayList<Toppings> toppings = new ArrayList<>();
         toppings.add(meat);
         Pizza pizza = new Pizza (1, size, crust, sauce, orderName, toppings);
@@ -96,13 +96,13 @@ public class MainTest {
         String crust = "thin";
         String sauce = "marinara";
         String orderName = "Ben";
-        Toppings meat = new Toppings (0, "meat");
+        Toppings meat = new Toppings (1, "pepperoni");
         ArrayList<Toppings> toppings = new ArrayList<>();
         toppings.add(meat);
         Pizza pizza = new Pizza (1, size, crust, sauce, orderName, toppings);
         int id = Main.insertPizza(conn, pizza);
 
-        Toppings veggie = new Toppings (0, "veggies");
+        Toppings veggie = new Toppings (11, "mozzarella");
         toppings = new ArrayList<>();
         toppings.add(veggie);
         Pizza pizza2 = new Pizza (id, "14", "thick", "pesto", "Dell", toppings);

@@ -78,6 +78,18 @@ public class Main {
         return users;
     }
 
+    public static int insertTopping(Connection conn, Toppings topping) throws SQLException {
+        PreparedStatement stmt = conn.prepareStatement("INSERT INTO toppings VALUES (NULL, ?)");
+        stmt.setString(1, topping.topping);
+        stmt.execute();
+
+        ResultSet rs = stmt.getGeneratedKeys();
+        if (rs.next()) {
+            return rs.getInt(1);
+        }
+        return -1;
+    }
+
     public static int insertPizza(Connection conn, Pizza pizza) throws SQLException {
         PreparedStatement stmt = conn.prepareStatement("INSERT INTO pizzas VALUES (NULL, ?, ?, ?, ?)");
         stmt.setString(1, pizza.orderName);
@@ -86,37 +98,50 @@ public class Main {
         stmt.setString(4, pizza.sauce);
 
         stmt.execute();
-
+        int pizzaId = -1;
         //returns inserted pizza's id
         ResultSet rs = stmt.getGeneratedKeys();
         if (rs.next()) {
-            return rs.getInt(1);
+            pizzaId = rs.getInt(1);
         }
-        return -1;
+        for (Toppings t : pizza.topping) {
+            int toppingId = insertTopping(conn, t);
+            insertBuiltPizza(conn, pizzaId, toppingId);
+        }
+
+
+        return pizzaId;
     }
 
-    public static void insertBuiltPizza(Connection conn, ArrayList<Toppings> toppings, int pizzaId) throws SQLException {
+    public static void insertBuiltPizza (Connection conn, int pizzaId, int toppingId) throws SQLException {
+        PreparedStatement stmt = conn.prepareStatement("INSERT INTO builtpizza VALUES (NULL, ?, ?)");
+        stmt.setInt(1, pizzaId);
+        stmt.setInt(2,toppingId);
+        stmt.execute();
+    }
 
-
-        //select toppings method/get topping ids
-        PreparedStatement stmt1 = conn.prepareStatement("SELECT * FROM toppings");
-        ResultSet results = stmt1.executeQuery();
-        while (results.next()) {
-            int toppingId = results.getInt("id");
-            String name = results.getString("topping");
-
-            int size = toppings.size();
-
-            for (int i = 0; i <size; i++) {
-                Toppings temp = toppings.get(i);
-                if (name.equalsIgnoreCase(temp.topping)) {
-                    PreparedStatement stmt = conn.prepareStatement("INSERT INTO builtpizza VALUES (NULL, ?, ?)");
-
-                    stmt.setInt(1, pizzaId);
-                    stmt.setInt(2, toppingId);
-                    stmt.execute();
-                }
-            }
+//    public static void insertBuiltPizza(Connection conn, ArrayList<Toppings> toppings, int pizzaId) throws SQLException {
+//
+//
+//        //select toppings method/get topping ids
+//        PreparedStatement stmt1 = conn.prepareStatement("SELECT * FROM toppings");
+//        ResultSet results = stmt1.executeQuery();
+//        while (results.next()) {
+//            int toppingId = results.getInt("id");
+//            String name = results.getString("topping");
+//
+//            int size = toppings.size();
+//
+//            for (int i = 0; i <size; i++) {
+//                Toppings temp = toppings.get(i);
+//                if (name.equalsIgnoreCase(temp.topping)) {
+//                    PreparedStatement stmt = conn.prepareStatement("INSERT INTO builtpizza VALUES (NULL, ?, ?)");
+//
+//                    stmt.setInt(1, pizzaId);
+//                    stmt.setInt(2, toppingId);
+//                    stmt.execute();
+//                }
+//            }
 
 
 
@@ -157,8 +182,6 @@ public class Main {
             }*/
 
 
-        }
-    }
 
 
     //"SELECT * FROM restaurants INNER JOIN users ON restaurants.user_id = users.id WHERE users.id= ?"
@@ -166,75 +189,21 @@ public class Main {
         PreparedStatement stmt = conn.prepareStatement("SELECT * FROM pizzas");
         ResultSet results = stmt.executeQuery();
         ArrayList<Pizza> pizzas = new ArrayList<>();
-        ArrayList<Toppings> toppings = new ArrayList<>();
-        Toppings topping = new Toppings();
         while (results.next()) {
             int id = results.getInt("id");
             String size = results.getString("size");
             String crust = results.getString("crust");
             String sauce = results.getString("sauce");
+            ArrayList<Toppings> toppings = new ArrayList<>();
 
-            stmt = conn.prepareStatement("SELECT * FROM builtpizza INNER JOIN toppings ON builtpizza.topping_id = toppings.id WHERE builtpizza.pizza_id =?");
+            stmt = conn.prepareStatement("SELECT * FROM toppings INNER JOIN builtpizza ON builtpizza.topping_id = toppings.id WHERE builtpizza.pizza_id =?");
             stmt.setInt(1, id);
             ResultSet resultsTop = stmt.executeQuery();
             while (resultsTop.next()) {
-                int topId = results.getInt("id");
-                if (topId == 1) {
-                    topping = new Toppings(1, "pepperoni");
-                }
-                else if (topId == 2) {
-                    topping = new Toppings(2, "buffalo chicken");
-                }
-                else if (topId == 3) {
-                    topping =  new Toppings(3, "bacon");
-                }
-                else if (topId == 4) {
-                    topping =  new Toppings(4, "sausage");
-                }
-                else if (topId == 5) {
-                    topping =  new Toppings(5, "ham");
-                }
-                else if (topId == 6) {
-                    topping =  new Toppings(6, "peppers");
-                }
-                else if (topId == 7) {
-                    topping =  new Toppings(7, "mushroom");
-                }
-                else if (topId == 8) {
-                    topping =  new Toppings(8, "onion");
-                }
-                else if (topId == 9) {
-                    topping =  new Toppings(9, "olive");
-                }
-                else if (topId == 10) {
-                    topping =  new Toppings(10, "pineapple");
-                }
-                else if (topId == 11) {
-                    topping =  new Toppings(11, "mozzarella");
-                }
-                else if (topId == 12) {
-                    topping =  new Toppings(12, "cheddar");
-                }
-                else if (topId == 13) {
-                    topping =  new Toppings(13, "gouda");
-                }
-                else if (topId == 14) {
-                    topping =  new Toppings(14, "parmesan");
-                }
-                else if (topId == 15) {
-                    topping =  new Toppings(15, "jack");
-                }
-                else if (topId == 16) {
-                    topping =  new Toppings(16, "tomato");
-                }
-                else if (topId == 17) {
-                    topping =  new Toppings(17, "basil");
-                }
-                toppings.add(topping);
-
+                int topId = resultsTop.getInt("id");
+                String topping = resultsTop.getString("topping");
+                toppings.add(new Toppings(topId, topping));
             }
-
-
 
             Pizza p = new Pizza(id, size, crust, sauce, "", toppings);
             pizzas.add(p);
@@ -268,7 +237,7 @@ public class Main {
 
         deleteBuiltPizza(conn, pizza.id);
 
-        insertBuiltPizza(conn, pizza.topping, pizza.id);
+        //insertBuiltPizza(conn, pizza.topping, pizza.id);
 
 
     }
@@ -282,6 +251,48 @@ public class Main {
         Spark.externalStaticFileLocation("public");
         Spark.init();
 
+
+        Spark.get(
+                "/pizza",
+                (request, response) ->{
+                    ArrayList<Pizza> pizzas = selectPizzas(conn);
+                    JsonSerializer s = new JsonSerializer();
+                    return s.serialize(pizzas);
+                }
+        );
+
+        Spark.post(
+                "/pizza",
+                (request, response) -> {
+                    String body = request.body();
+                    JsonParser p = new JsonParser();
+                    Pizza pizza = p.parse(body, Pizza.class);
+                    insertPizza(conn, pizza);
+                    return "";
+                }
+        );
+
+        Spark.put(
+                "/pizza/:id",
+                (request, response) -> {
+                    int id = Integer.valueOf(request.params(":id"));
+                    String body = request.body();
+                    JsonParser p = new JsonParser();
+                    Pizza pizza = p.parse(body, Pizza.class);
+                    updatePizza(conn, pizza);
+                    return "";
+                }
+
+        );
+
+        Spark.delete(
+                "/pizza/:id",
+                (request, response) -> {
+                    int id = Integer.valueOf(request.params(":id"));
+                    deletePizza(conn, id);
+                    return "";
+                }
+        );
 
         Spark.get(
                 "/pizza",

@@ -59,12 +59,19 @@ var pizzaPage = {
           $('.dropdown-menu').addClass('hidden');
         });
 
-
-        //loging custom item order to the order form
+        //loging custom item order to the order form DOESN'T WORK
         $('.dropdown-item').on('click', function(event) {
           event.preventDefault();
           console.log($(this));
-          $('#sizeList').html($('input[name="size"]').val());
+          $('#sizeList').html($('list-group-item[name="size"]').val());
+        });
+
+        //showing dancing pizzaToSave
+        $('.orderButton').on('click', function(event) {
+          event.preventDefault();
+          console.log($(this));
+          $('.pizza').removeClass('hidden');
+          $('.ordering-container').addClass('hidden');
         })
 
 
@@ -77,7 +84,7 @@ var pizzaPage = {
                     size: $('input[name="size-list"]').val(),
                     crust: $('input[name="crust-list"]').val(),
                     sauce: $('input[name="sauce-list"]').val(),
-                    topping: [{topping: $('input[name="topping1-list"]').val()},{topping:$('input[name="topping2-list"]').val()},{topping:$('input[name="topping3-list"]').val()}]
+                    topping: $(this)[{topping: $('input[name="topping1-list"]').val()},{topping:$('input[name="topping2-list"]').val()},{topping:$('input[name="topping3-list"]').val()}]
                     // topping2: $('input[name="topping2-list"]').val(),
                     // topping3: $('input[name="topping3-list"]').val(),
                 }
@@ -89,12 +96,14 @@ var pizzaPage = {
 
             $('input').val("");
         })
-        //delete pizza
+        //cancel pizza order 
         $("#cancel").on("click", function(event){
           event.preventDefault();
           var pizzaID = $(this).children().data('id');
           console.log(this,pizzaID);
           pizzaPage.deletePizza(pizzaID);
+          $('.pizza').addClass('hidden');
+          $('.ordering-container').removeClass('hidden');
         });
 
     },

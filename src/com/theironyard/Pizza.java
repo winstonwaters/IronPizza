@@ -7,6 +7,11 @@ import java.util.ArrayList;
  */
 public class Pizza {
     int id;
+    String size;
+    String crust;
+    String sauce;
+    String orderName;
+    ArrayList<Toppings> topping = new ArrayList<>();
 
     public int getId() {
         return id;
@@ -16,11 +21,7 @@ public class Pizza {
         this.id = id;
     }
 
-    String size;
-    String crust;
-    String sauce;
-    String orderName;
-    ArrayList<Toppings> topping = new ArrayList<>();
+
 
     public Pizza(int id, String size, String crust, String sauce, String orderName, ArrayList<Toppings> topping) {
         this.id  = id;
@@ -28,7 +29,7 @@ public class Pizza {
         this.crust = crust;
         this.sauce = sauce;
         this.orderName = orderName;
-        this.topping = topping;
+        this.topping = (ArrayList) topping;
     }
 
     public Pizza(String orderName) {

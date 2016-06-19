@@ -3,7 +3,7 @@ $(document).ready(function() {
 })
 
 var pizzaPage = {
-    url: "http://tiny-tiny.herokuapp.com/collections/ironPizza",
+    url: "/pizza",
     pizzaArr: [],
     init: function() {
         pizzaPage.events();
@@ -75,6 +75,7 @@ var pizzaPage = {
             url: pizzaPage.url,
             method: 'GET',
             success: function(data) {
+                data = JSON.parse(data);
                 console.log("yes! read", data);
                 $('#cancel').html("");
                 data.forEach(function(element, idx) {

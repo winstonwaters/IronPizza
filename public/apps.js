@@ -1,5 +1,7 @@
 $(document).ready(function() {
     pizzaPage.init();
+    $(".dropdown-toggle").dropdown();
+
 })
 
 var pizzaPage = {
@@ -15,41 +17,40 @@ var pizzaPage = {
 
 
     events: function() {
-        $('#order').on("click", "submit", function(event) {
-            event.preventDefault();
-            console.log("click");
-            $('.order-group input[name="order-list"]').val($('input[name="order"]').val());
-            $('input[name="order"]').val("");
-        })
+
+
+
+
 
         $(".order-group").on('submit', function(event) {
+                event.preventDefault();
+                console.log("click");
+                var pizzaToSave = {
+                        name: $('.order-group input[name="order-list"]').val(),
+                        size: $('input[name="size-list"]').val(),
+                        crust: $('input[name="crust-list"]').val(),
+                        sauce: $('input[name="sauce-list"]').val(),
+                        topping1: $('input[name="topping1-list"]').val(),
+                        topping2: $('input[name="topping2-list"]').val(),
+                        topping3: $('input[name="topping3-list"]').val(),
+                    }
+                    // debugger
+
+                console.log(pizzaToSave);
+                pizzaPage.createPizza(pizzaToSave);
+                // pizzaPage.create(JSON.stringify(pizzaToSave));
+
+                // $('input').val("");
+            })
+            //delete pizza
+        $("#cancel").on("click", function(event) {
             event.preventDefault();
-            console.log("click");
-            var pizzaToSave = {
-                    name: $('.order-group input[name="order-list"]').val(),
-                    size: $('input[name="size-list"]').val(),
-                    crust: $('input[name="crust-list"]').val(),
-                    sauce: $('input[name="sauce-list"]').val(),
-                    topping1: $('input[name="topping1-list"]').val(),
-                    topping2: $('input[name="topping2-list"]').val(),
-                    topping3: $('input[name="topping3-list"]').val(),
-                }
-                // debugger
-
-            console.log(pizzaToSave);
-            pizzaPage.createPizza(pizzaToSave);
-            // pizzaPage.create(JSON.stringify(pizzaToSave));
-
-            // $('input').val("");
-        })
-        //delete pizza
-        $("#cancel").on("click", function(event){
-          event.preventDefault();
-          var pizzaID = $(this).children().data('id');
-          pizzaPage.deletePizza(pizzaID);
+            var pizzaID = $(this).children().data('id');
+            pizzaPage.deletePizza(pizzaID);
         });
 
     },
+
 
 
     createPizza: function(pizzaToSave) {
@@ -111,7 +112,7 @@ var pizzaPage = {
             url: deleteOrder,
             method: 'DELETE',
             success: function() {
-                console.log("yes! deleted" );
+                console.log("yes! deleted");
                 console.log(deleteOrder);
                 pizzaPage.readPizza();
             },

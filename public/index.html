@@ -26,83 +26,95 @@
         <div class="row leftside-order">
             <div class="col-md-4">
                 <h1>Custom Pizza</h1>
-                <!-- order name -->
-                <div class="row">
-                    <div class="col-lg-offset-1 col-lg-10">
-                        <div class="input-group" id="order">
-                            <input type="text" name="order" value="" class="form-control" placeholder="Order Name">
-                            <span class="input-group-btn">
-                          <button type="submit" class="btn btn-secondary" >Go!</button>
-                        </span>
-                        </div>
-                    </div>
-                </div>
                 <!-- pizza size -->
                 <div class="row">
+
                     <div class="col-lg-offset-1 col-lg-10">
-                        <div class="input-group" id="size">
-                            <input type="text" name="size" value="" class="form-control" placeholder="Size">
-                            <span class="input-group-btn">
-                          <button class="btn btn-secondary" type="button">Go!</button>
-                        </span>
+                        <div class="dropdown open">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownSize" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Size
+                            </button>
+
+                            <div class="dropdown-menu" aria-labelledby="dropdownSize">
+                                <a class="dropdown-item" href="#">Small</a>
+                                <a class="dropdown-item" href="#">Medium</a>
+                                <a class="dropdown-item" href="#">Large</a>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <!-- pizza crust -->
                 <div class="row">
+
                     <div class="col-lg-offset-1 col-lg-10">
-                        <div class="input-group" id="Crust">
-                            <input type="text" name="size" value="" class="form-control" placeholder="Crust">
-                            <span class="input-group-btn">
-                          <button class="btn btn-secondary" type="button">Go!</button>
-                        </span>
+                        <div class="dropdown open">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownCrust" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Crust
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownCrust">
+                                <a class="dropdown-item" href="#">Thick</a>
+                                <a class="dropdown-item" href="#">Thin</a>
+                                <a class="dropdown-item" href="#">Stuffed</a>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <!-- pizza sauce -->
+
+                <!-- pizza: protein -->
                 <div class="row">
+
                     <div class="col-lg-offset-1 col-lg-10">
-                        <div class="input-group" id="sauce">
-                            <input type="text" name="size" value="" class="form-control" placeholder="sauce">
-                            <span class="input-group-btn">
-                          <button class="btn btn-secondary" type="button">Go!</button>
-                        </span>
+                        <div class="dropdown open">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownSauce" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Meat
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownSauce">
+                                <a class="dropdown-item" href="#">Garlic Aioli</a>
+                                <a class="dropdown-item" href="#">Marinara</a>
+                                <a class="dropdown-item" href="#">Tomato Basil</a>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <!-- pizza topping 1 -->
+
+                <!-- pizza: veggie -->
                 <div class="row">
+
                     <div class="col-lg-offset-1 col-lg-10">
-                        <div class="input-group" id="topping1">
-                            <input type="text" name="size" value="" class="form-control" placeholder="topping 1">
-                            <span class="input-group-btn">
-                          <button class="btn btn-secondary" type="button">Go!</button>
-                        </span>
+                        <div class="dropdown open">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownVeggie" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Veggie
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownVeggie">
+                                <a class="dropdown-item" href="#">Peppers</a>
+                                <a class="dropdown-item" href="#">Mushroom</a>
+                                <a class="dropdown-item" href="#">Onion</a>
+                                <a class="dropdown-item" href="#">Olives</a>
+                                <a class="dropdown-item" href="#">Pineapple</a>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <!-- pizza topping 2 -->
+
+                <!-- pizza: cheese -->
                 <div class="row">
+
                     <div class="col-lg-offset-1 col-lg-10">
-                        <div class="input-group" id="topping2">
-                            <input type="text" name="size" value="" class="form-control" placeholder="topping 2">
-                            <span class="input-group-btn">
-                          <button class="btn btn-secondary" type="button">Go!</button>
-                        </span>
+                        <div class="dropdown open">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownCheese" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Cheese
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownCheese">
+                                <a class="dropdown-item" href="#">Mozzarella</a>
+                                <a class="dropdown-item" href="#">Cheddar</a>
+                                <a class="dropdown-item" href="#">Gouda</a>
+                                <a class="dropdown-item" href="#">Parmesan</a>
+                                <a class="dropdown-item" href="#">Colby Jack</a>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <!-- pizza topping 3 -->
-                <div class="row">
-                    <div class="col-lg-offset-1 col-lg-10">
-                        <div class="input-group" id="topping3">
-                            <input type="text" name="size" value="" class="form-control" placeholder="topping 3">
-                            <span class="input-group-btn">
-                          <button class="btn btn-secondary" type="button">Go!</button>
-                        </span>
-                        </div>
-                    </div>
-                </div>
+
             </div>
 
             <!-- MIDDLE COL -->
@@ -167,7 +179,7 @@
           </div>
 
           <div class="col-md-6" id="cancel">
-            
+
           </div>
         </div>
       </div>
@@ -188,7 +200,6 @@
 
     <script src="node_modules/jquery/dist/jquery.js" charset="utf-8"></script>
     <script src="node_modules/underscore/underscore.js" charset="utf-8"></script>
-
     <script src="templates.js" charset="utf-8"></script>
 
     <script src="apps.js" charset="utf-8"></script>

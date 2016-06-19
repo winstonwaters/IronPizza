@@ -68,6 +68,7 @@ public class Main {
 
     public static void insertBuiltPizza(Connection conn, ArrayList<Toppings> toppings, int pizzaId) throws SQLException {
 
+
         //select toppings method/get topping ids
         PreparedStatement stmt1 = conn.prepareStatement("SELECT * FROM toppings");
         ResultSet results = stmt1.executeQuery();
@@ -87,6 +88,16 @@ public class Main {
                     stmt.execute();
                 }
             }
+
+
+
+
+
+
+
+
+
+
 
             /*
             switch (topping) {
@@ -152,20 +163,43 @@ public class Main {
 
             }
 
-            Pizza p = new Pizza(size, crust, sauce, "", toppings);
+
+
+            Pizza p = new Pizza(id, size, crust, sauce, "", toppings);
             pizzas.add(p);
         }
         return pizzas;
     }
+
 
     public static void deletePizza(Connection conn, int id) throws SQLException {
         PreparedStatement stmt = conn.prepareStatement("DELETE FROM pizzas WHERE id = ?");
         stmt.setInt(1, id);
         stmt.execute();
 
-        stmt = conn.prepareStatement("DELETE FROM builtpizza WHERE pizza_id = ?");
-        stmt.setInt(1, id);
+        deleteBuiltPizza(conn, id);
+    }
+
+    public static void deleteBuiltPizza(Connection conn, int pizzaId) throws SQLException {
+        PreparedStatement stmt = conn.prepareStatement("DELETE FROM builtpizza WHERE pizza_id = ?");
+        stmt.setInt(1, pizzaId);
         stmt.execute();
+    }
+
+    public static void updatePizza (Connection conn, Pizza pizza) throws SQLException {
+        PreparedStatement stmt = conn.prepareStatement("UPDATE pizzas SET size = ?, crust = ?, sauce = ?, ordername = ? WHERE id = ?");
+        stmt.setString(1, pizza.size);
+        stmt.setString(2, pizza.crust);
+        stmt.setString(3, pizza.sauce);
+        stmt.setString(4, pizza.orderName);
+        stmt.setInt(5, pizza.id);
+        stmt.execute();
+
+        deleteBuiltPizza(conn, pizza.id);
+
+        insertBuiltPizza(conn, pizza.topping, pizza.id);
+
+
     }
 
     public static void main(String[] args) throws SQLException {
@@ -196,6 +230,19 @@ public class Main {
                     insertPizza(conn, pizza);
                     return "";
                 }
+        );
+
+        Spark.put(
+                "/pizza/:id",
+                (request, response) -> {
+                    int id = Integer.valueOf(request.params(":id"));
+                    String body = request.body();
+                    JsonParser p = new JsonParser();
+                    Pizza pizza = p.parse(body, Pizza.class);
+                    updatePizza(conn, pizza);
+                    return "";
+                }
+
         );
 
         Spark.delete(

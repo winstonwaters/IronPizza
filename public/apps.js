@@ -1,5 +1,7 @@
 $(document).ready(function() {
     pizzaPage.init();
+    $(".dropdown-toggle").dropdown();
+
 })
 
 var pizzaPage = {
@@ -12,15 +14,7 @@ var pizzaPage = {
     styling: function() {
         pizzaPage.readPizza();
     },
-
-
     events: function() {
-        $('#order').on("click", "submit", function(event) {
-            event.preventDefault();
-            console.log("click");
-            $('.order-group input[name="order-list"]').val($('input[name="order"]').val());
-            $('input[name="order"]').val("");
-        })
 
         $(".order-group").on('submit', function(event) {
             event.preventDefault();
@@ -52,6 +46,7 @@ var pizzaPage = {
         });
 
     },
+
 
 
     createPizza: function(pizzaToSave) {
@@ -115,7 +110,7 @@ var pizzaPage = {
             url: deleteOrder,
             method: 'DELETE',
             success: function() {
-                console.log("yes! deleted" );
+                console.log("yes! deleted");
                 console.log(deleteOrder);
                 pizzaPage.readPizza();
             },

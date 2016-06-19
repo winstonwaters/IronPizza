@@ -31,7 +31,7 @@ var pizzaPage = {
                     size: $('input[name="size-list"]').val(),
                     crust: $('input[name="crust-list"]').val(),
                     sauce: $('input[name="sauce-list"]').val(),
-                    topping: [$('input[name="topping1-list"]').val(),$('input[name="topping2-list"]').val(),$('input[name="topping3-list"]').val(),],
+                    topping: [{topping: $('input[name="topping1-list"]').val()},{topping:$('input[name="topping2-list"]').val()},{topping:$('input[name="topping3-list"]').val()}]
                     // topping2: $('input[name="topping2-list"]').val(),
                     // topping3: $('input[name="topping3-list"]').val(),
                 }

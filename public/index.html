@@ -30,12 +30,12 @@
                 <div class="row">
 
                     <div class="col-lg-offset-1 col-lg-10">
-                        <div class="dropdown open">
+                        <div class="dropdown">
                             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownSize" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Size
                             </button>
 
-                            <div class="dropdown-menu" aria-labelledby="dropdownSize">
+                            <div class="dropdown-menu hidden" id="sizedrop" aria-labelledby="dropdownSize">
                                 <a class="dropdown-item" href="#">Small</a>
                                 <a class="dropdown-item" href="#">Medium</a>
                                 <a class="dropdown-item" href="#">Large</a>
@@ -47,11 +47,11 @@
                 <div class="row">
 
                     <div class="col-lg-offset-1 col-lg-10">
-                        <div class="dropdown open">
+                        <div class="dropdown">
                             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownCrust" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Crust
                             </button>
-                            <div class="dropdown-menu" aria-labelledby="dropdownCrust">
+                            <div class="dropdown-menu hidden" id="crustdrop" aria-labelledby="dropdownCrust">
                                 <a class="dropdown-item" href="#">Thick</a>
                                 <a class="dropdown-item" href="#">Thin</a>
                                 <a class="dropdown-item" href="#">Stuffed</a>
@@ -60,18 +60,36 @@
                     </div>
                 </div>
 
-                <!-- pizza: protein -->
+                <!-- pizza: Sauce -->
                 <div class="row">
 
                     <div class="col-lg-offset-1 col-lg-10">
-                        <div class="dropdown open">
+                        <div class="dropdown">
                             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownSauce" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Meat
+                                Sauce
                             </button>
-                            <div class="dropdown-menu" aria-labelledby="dropdownSauce">
+                            <div class="dropdown-menu hidden" id="saucedrop" aria-labelledby="dropdownSauce">
                                 <a class="dropdown-item" href="#">Garlic Aioli</a>
                                 <a class="dropdown-item" href="#">Marinara</a>
                                 <a class="dropdown-item" href="#">Tomato Basil</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- pizza: Meat -->
+                <div class="row">
+
+                    <div class="col-lg-offset-1 col-lg-10">
+                        <div class="dropdown">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMeat" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Meat
+                            </button>
+                            <div class="dropdown-menu hidden" id="meatdrop" aria-labelledby="dropdownMeat">
+                                <a class="dropdown-item" href="#">Pepperoni</a>
+                                <a class="dropdown-item" href="#">Buffolo Chicken</a>
+                                <a class="dropdown-item" href="#">Bacon</a>
+                                <a class="dropdown-item" href="#">Sausage</a>
+                                <a class="dropdown-item" href="#">Ham</a>
                             </div>
                         </div>
                     </div>
@@ -85,7 +103,7 @@
                             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownVeggie" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Veggie
                             </button>
-                            <div class="dropdown-menu" aria-labelledby="dropdownVeggie">
+                            <div class="dropdown-menu hidden" id="veggiedrop" aria-labelledby="dropdownVeggie">
                                 <a class="dropdown-item" href="#">Peppers</a>
                                 <a class="dropdown-item" href="#">Mushroom</a>
                                 <a class="dropdown-item" href="#">Onion</a>
@@ -104,7 +122,7 @@
                             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownCheese" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Cheese
                             </button>
-                            <div class="dropdown-menu" aria-labelledby="dropdownCheese">
+                            <div class="dropdown-menu hidden" id="cheesedrop" aria-labelledby="dropdownCheese">
                                 <a class="dropdown-item" href="#">Mozzarella</a>
                                 <a class="dropdown-item" href="#">Cheddar</a>
                                 <a class="dropdown-item" href="#">Gouda</a>
@@ -198,6 +216,7 @@
         </p> -->
     </div>
 
+    <script   src="https://code.jquery.com/jquery-2.2.4.js"   integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI="   crossorigin="anonymous"></script>
     <script src="node_modules/jquery/dist/jquery.js" charset="utf-8"></script>
     <script src="node_modules/underscore/underscore.js" charset="utf-8"></script>
     <script src="templates.js" charset="utf-8"></script>

@@ -14,6 +14,7 @@ var pizzaPage = {
     },
     events: function() {
 
+
         //dropdown size
         $("#dropdownSize").on('click', function() {
           event.preventDefault();
@@ -68,6 +69,7 @@ var pizzaPage = {
         })
 
 
+
         $(".order-group").on('submit', function(event) {
             event.preventDefault();
             console.log("click");
@@ -103,12 +105,13 @@ var pizzaPage = {
 
     createPizza: function(pizzaToSave) {
         $.ajax({
-             contentType: "application/json; charset=utf-8",
+            contentType: "application/json; charset=utf-8",
             url: pizzaPage.url,
             method: 'POST',
             data: pizzaToSave,
             success: function(data) {
                 console.log("yes! created", data);
+                console.log();
                 pizzaPage.readPizza();
             },
             error: function() {

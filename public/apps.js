@@ -133,6 +133,7 @@ var pizzaPage = {
 
                 });
 
+                console.log(data);
             },
             error: function() {
                 console.error("read error", err);

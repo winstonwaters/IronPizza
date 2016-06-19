@@ -26,20 +26,20 @@ var pizzaPage = {
             event.preventDefault();
             console.log("click");
             var pizzaToSave = {
-                    
+
                     name: $('.order-group input[name="order-list"]').val(),
                     size: $('input[name="size-list"]').val(),
                     crust: $('input[name="crust-list"]').val(),
                     sauce: $('input[name="sauce-list"]').val(),
-                    topping1: $('input[name="topping1-list"]').val(),
-                    topping2: $('input[name="topping2-list"]').val(),
-                    topping3: $('input[name="topping3-list"]').val(),
+                    topping: [$('input[name="topping1-list"]').val(),$('input[name="topping2-list"]').val(),$('input[name="topping3-list"]').val(),],
+                    // topping2: $('input[name="topping2-list"]').val(),
+                    // topping3: $('input[name="topping3-list"]').val(),
                 }
                 // debugger
 
             console.log(pizzaToSave);
-            // pizzaPage.createPizza(pizzaToSave);
-            pizzaPage.createPizza(JSON.stringify(pizzaToSave));
+            pizzaPage.createPizza(pizzaToSave);
+            // pizzaPage.createPizza(JSON.stringify(pizzaToSave));
 
             $('input').val("");
         })
@@ -77,6 +77,7 @@ var pizzaPage = {
             success: function(data) {
                 data = JSON.parse(data);
                 console.log("yes! read", data);
+                // data = JSON.parse(data);
                 $('#cancel').html("");
                 data.forEach(function(element, idx) {
                     var pizzaHtmlStr = pizzaPage.htmlGenerator(pizzaTmpls.myPizza, element)

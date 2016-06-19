@@ -26,7 +26,7 @@ var pizzaPage = {
             event.preventDefault();
             console.log("click");
             var pizzaToSave = {
-                    
+
                     name: $('.order-group input[name="order-list"]').val(),
                     size: $('input[name="size-list"]').val(),
                     crust: $('input[name="crust-list"]').val(),
@@ -39,7 +39,7 @@ var pizzaPage = {
 
             console.log(pizzaToSave);
             // pizzaPage.createPizza(pizzaToSave);
-            pizzaPage.createPizza(JSON.stringify(pizzaToSave));
+            // pizzaPage.createPizza(JSON.stringify(pizzaToSave));
 
             $('input').val("");
         })
@@ -76,6 +76,7 @@ var pizzaPage = {
             method: 'GET',
             success: function(data) {
                 console.log("yes! read", data);
+                // data = JSON.parse(data);
                 $('#cancel').html("");
                 data.forEach(function(element, idx) {
                     var pizzaHtmlStr = pizzaPage.htmlGenerator(pizzaTmpls.myPizza, element)

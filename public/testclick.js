@@ -28,6 +28,7 @@ $(".order-group").on('submit', function(event) {
     topping3: $('input[name="topping3-list"]').val(),
   }
   // debugger
+  
   console.log(pizzaToSave);
 
   $('input').val("");

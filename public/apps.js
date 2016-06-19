@@ -5,7 +5,7 @@ $(document).ready(function() {
 })
 
 var pizzaPage = {
-    url: "http://tiny-tiny.herokuapp.com/collections/ironPizza",
+    url: "/pizza",
     pizzaArr: [],
     init: function() {
         pizzaPage.events();
@@ -14,39 +14,35 @@ var pizzaPage = {
     styling: function() {
         pizzaPage.readPizza();
     },
-
-
     events: function() {
 
-
-
-
-
         $(".order-group").on('submit', function(event) {
-                event.preventDefault();
-                console.log("click");
-                var pizzaToSave = {
-                        name: $('.order-group input[name="order-list"]').val(),
-                        size: $('input[name="size-list"]').val(),
-                        crust: $('input[name="crust-list"]').val(),
-                        sauce: $('input[name="sauce-list"]').val(),
-                        topping1: $('input[name="topping1-list"]').val(),
-                        topping2: $('input[name="topping2-list"]').val(),
-                        topping3: $('input[name="topping3-list"]').val(),
-                    }
-                    // debugger
-
-                console.log(pizzaToSave);
-                pizzaPage.createPizza(pizzaToSave);
-                // pizzaPage.create(JSON.stringify(pizzaToSave));
-
-                // $('input').val("");
-            })
-            //delete pizza
-        $("#cancel").on("click", function(event) {
             event.preventDefault();
-            var pizzaID = $(this).children().data('id');
-            pizzaPage.deletePizza(pizzaID);
+            console.log("click");
+            var pizzaToSave = {
+
+                    name: $('.order-group input[name="order-list"]').val(),
+                    size: $('input[name="size-list"]').val(),
+                    crust: $('input[name="crust-list"]').val(),
+                    sauce: $('input[name="sauce-list"]').val(),
+                    topping: [{topping: $('input[name="topping1-list"]').val()},{topping:$('input[name="topping2-list"]').val()},{topping:$('input[name="topping3-list"]').val()}]
+                    // topping2: $('input[name="topping2-list"]').val(),
+                    // topping3: $('input[name="topping3-list"]').val(),
+                }
+                // debugger
+
+            console.log(pizzaToSave);
+//            pizzaPage.createPizza(pizzaToSave);
+             pizzaPage.createPizza(JSON.stringify(pizzaToSave));
+
+            $('input').val("");
+        })
+        //delete pizza
+        $("#cancel").on("click", function(event){
+          event.preventDefault();
+          var pizzaID = $(this).children().data('id');
+          console.log(this,pizzaID);
+          pizzaPage.deletePizza(pizzaID);
         });
 
     },
@@ -55,7 +51,7 @@ var pizzaPage = {
 
     createPizza: function(pizzaToSave) {
         $.ajax({
-            // contentType: "application/json; charset=utf-8",
+             contentType: "application/json; charset=utf-8",
             url: pizzaPage.url,
             method: 'POST',
             data: pizzaToSave,
@@ -74,7 +70,9 @@ var pizzaPage = {
             url: pizzaPage.url,
             method: 'GET',
             success: function(data) {
+                data = JSON.parse(data);
                 console.log("yes! read", data);
+                // data = JSON.parse(data);
                 $('#cancel').html("");
                 data.forEach(function(element, idx) {
                     var pizzaHtmlStr = pizzaPage.htmlGenerator(pizzaTmpls.myPizza, element)
@@ -107,7 +105,7 @@ var pizzaPage = {
     },
 
     deletePizza: function(pizzaID) {
-        var deleteOrder = pizzaPage.url + '/' + pizzaID;
+        var deleteOrder = pizzaPage.url +'/'+pizzaID;
         $.ajax({
             url: deleteOrder,
             method: 'DELETE',

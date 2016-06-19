@@ -15,7 +15,7 @@ public class Main {
         Statement stmtdrop = conn.createStatement();
         stmtdrop.execute("DROP TABLE IF EXISTS toppings");
         stmt.execute("CREATE TABLE IF NOT EXISTS users (id IDENTITY, username VARCHAR)");
-        stmt.execute("CREATE TABLE IF NOT EXISTS pizzas (id IDENTITY, size VARCHAR, crust VARCHAR, sauce VARCHAR, ordername VARCHAR)");
+        stmt.execute("CREATE TABLE IF NOT EXISTS pizzas (id IDENTITY, ordername VARCHAR, size VARCHAR, crust VARCHAR, sauce VARCHAR)");
         stmt.execute("CREATE TABLE IF NOT EXISTS toppings (id IDENTITY, topping VARCHAR)");
         stmt.execute("CREATE TABLE IF NOT EXISTS builtpizza (id IDENTITY, pizza_id INT, topping_id INT)");
     }
@@ -23,11 +23,39 @@ public class Main {
     public static void populateToppings(Connection conn) throws SQLException {
 
 
-        PreparedStatement stmt = conn.prepareStatement("INSERT INTO toppings VALUES(NULL, 'meat')");
+        PreparedStatement stmt = conn.prepareStatement("INSERT INTO toppings VALUES(NULL, 'pepperoni')");
         stmt.execute();
-        stmt = conn.prepareStatement("INSERT INTO toppings VALUES(NULL, 'veggie')");
+        stmt = conn.prepareStatement("INSERT INTO toppings VALUES(NULL, 'buffalo chicken')");
         stmt.execute();
-        stmt = conn.prepareStatement("INSERT INTO toppings VALUES(NULL, 'cheese')");
+        stmt = conn.prepareStatement("INSERT INTO toppings VALUES(NULL, 'bacon')");
+        stmt.execute();
+        stmt = conn.prepareStatement("INSERT INTO toppings VALUES(NULL, 'sausage')");
+        stmt.execute();
+        stmt = conn.prepareStatement("INSERT INTO toppings VALUES(NULL, 'ham')");
+        stmt.execute();
+        stmt = conn.prepareStatement("INSERT INTO toppings VALUES(NULL, 'peppers')");
+        stmt.execute();
+        stmt = conn.prepareStatement("INSERT INTO toppings VALUES(NULL, 'mushroom')");
+        stmt.execute();
+        stmt = conn.prepareStatement("INSERT INTO toppings VALUES(NULL, 'onion')");
+        stmt.execute();
+        stmt = conn.prepareStatement("INSERT INTO toppings VALUES(NULL, 'olive')");
+        stmt.execute();
+        stmt = conn.prepareStatement("INSERT INTO toppings VALUES(NULL, 'pineapple')");
+        stmt.execute();
+        stmt = conn.prepareStatement("INSERT INTO toppings VALUES(NULL, 'mozzarella')");
+        stmt.execute();
+        stmt = conn.prepareStatement("INSERT INTO toppings VALUES(NULL, 'cheddar')");
+        stmt.execute();
+        stmt = conn.prepareStatement("INSERT INTO toppings VALUES(NULL, 'gouda')");
+        stmt.execute();
+        stmt = conn.prepareStatement("INSERT INTO toppings VALUES(NULL, 'parmesan')");
+        stmt.execute();
+        stmt = conn.prepareStatement("INSERT INTO toppings VALUES(NULL, 'jack')");
+        stmt.execute();
+        stmt = conn.prepareStatement("INSERT INTO toppings VALUES(NULL, 'tomato')");
+        stmt.execute();
+        stmt = conn.prepareStatement("INSERT INTO toppings VALUES(NULL, 'basil')");
         stmt.execute();
     }
 
@@ -52,10 +80,11 @@ public class Main {
 
     public static int insertPizza(Connection conn, Pizza pizza) throws SQLException {
         PreparedStatement stmt = conn.prepareStatement("INSERT INTO pizzas VALUES (NULL, ?, ?, ?, ?)");
-        stmt.setString(1, pizza.size);
-        stmt.setString(2, pizza.crust);
-        stmt.setString(3, pizza.sauce);
-        stmt.setString(4, pizza.orderName);
+        stmt.setString(1, pizza.orderName);
+        stmt.setString(2, pizza.size);
+        stmt.setString(3, pizza.crust);
+        stmt.setString(4, pizza.sauce);
+
         stmt.execute();
 
         //returns inserted pizza's id
@@ -80,7 +109,7 @@ public class Main {
 
             for (int i = 0; i <size; i++) {
                 Toppings temp = toppings.get(i);
-                if (name.equals(temp.topping)) {
+                if (name.equalsIgnoreCase(temp.topping)) {
                     PreparedStatement stmt = conn.prepareStatement("INSERT INTO builtpizza VALUES (NULL, ?, ?)");
 
                     stmt.setInt(1, pizzaId);
@@ -151,13 +180,55 @@ public class Main {
             while (resultsTop.next()) {
                 int topId = results.getInt("id");
                 if (topId == 1) {
-                    topping = new Toppings(1, "meat");
+                    topping = new Toppings(1, "pepperoni");
                 }
                 else if (topId == 2) {
-                    topping = new Toppings(2, "veggie");
+                    topping = new Toppings(2, "buffalo chicken");
                 }
                 else if (topId == 3) {
-                    topping =  new Toppings(3, "cheese");
+                    topping =  new Toppings(3, "bacon");
+                }
+                else if (topId == 4) {
+                    topping =  new Toppings(4, "sausage");
+                }
+                else if (topId == 5) {
+                    topping =  new Toppings(5, "ham");
+                }
+                else if (topId == 6) {
+                    topping =  new Toppings(6, "peppers");
+                }
+                else if (topId == 7) {
+                    topping =  new Toppings(7, "mushroom");
+                }
+                else if (topId == 8) {
+                    topping =  new Toppings(8, "onion");
+                }
+                else if (topId == 9) {
+                    topping =  new Toppings(9, "olive");
+                }
+                else if (topId == 10) {
+                    topping =  new Toppings(10, "pineapple");
+                }
+                else if (topId == 11) {
+                    topping =  new Toppings(11, "mozzarella");
+                }
+                else if (topId == 12) {
+                    topping =  new Toppings(12, "cheddar");
+                }
+                else if (topId == 13) {
+                    topping =  new Toppings(13, "gouda");
+                }
+                else if (topId == 14) {
+                    topping =  new Toppings(14, "parmesan");
+                }
+                else if (topId == 15) {
+                    topping =  new Toppings(15, "jack");
+                }
+                else if (topId == 16) {
+                    topping =  new Toppings(16, "tomato");
+                }
+                else if (topId == 17) {
+                    topping =  new Toppings(17, "basil");
                 }
                 toppings.add(topping);
 
@@ -188,10 +259,10 @@ public class Main {
 
     public static void updatePizza (Connection conn, Pizza pizza) throws SQLException {
         PreparedStatement stmt = conn.prepareStatement("UPDATE pizzas SET size = ?, crust = ?, sauce = ?, ordername = ? WHERE id = ?");
-        stmt.setString(1, pizza.size);
-        stmt.setString(2, pizza.crust);
-        stmt.setString(3, pizza.sauce);
-        stmt.setString(4, pizza.orderName);
+        stmt.setString(1, pizza.orderName);
+        stmt.setString(2, pizza.size);
+        stmt.setString(3, pizza.crust);
+        stmt.setString(4, pizza.sauce);
         stmt.setInt(5, pizza.id);
         stmt.execute();
 

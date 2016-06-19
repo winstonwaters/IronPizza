@@ -22,7 +22,6 @@ public class Main {
 
     public static void populateToppings(Connection conn) throws SQLException {
 
-
         PreparedStatement stmt = conn.prepareStatement("INSERT INTO toppings VALUES(NULL, 'pepperoni')");
         stmt.execute();
         stmt = conn.prepareStatement("INSERT INTO toppings VALUES(NULL, 'buffalo chicken')");
@@ -59,7 +58,7 @@ public class Main {
         stmt.execute();
     }
 
-    public static void insertUser(Connection conn, User user) throws SQLException {
+    /*public static void insertUser(Connection conn, User user) throws SQLException {
         PreparedStatement stmt = conn.prepareStatement("INSERT INTO users VALUES (NULL, ?)");
         stmt.setString(1, user.username);
         stmt.execute();
@@ -76,7 +75,7 @@ public class Main {
             users.add(user);
         }
         return users;
-    }
+    }*/
 
     public static int insertTopping(Connection conn, Toppings topping) throws SQLException {
         PreparedStatement stmt = conn.prepareStatement("INSERT INTO toppings VALUES (NULL, ?)");

@@ -1,7 +1,5 @@
 $(document).ready(function() {
     pizzaPage.init();
-    $(".dropdown-toggle").dropdown();
-
 })
 
 var pizzaPage = {
@@ -15,6 +13,60 @@ var pizzaPage = {
         pizzaPage.readPizza();
     },
     events: function() {
+
+        //dropdown size
+        $("#dropdownSize").on('click', function() {
+          event.preventDefault();
+          console.log('you clicked size');
+          $('#sizedrop').removeClass('hidden');
+        });
+        //dropdown crust
+        $("#dropdownCrust").on('click', function() {
+          event.preventDefault();
+          console.log('you clicked crust');
+          $('#crustdrop').removeClass('hidden');
+        });
+        //dropdown sauce
+        $("#dropdownSauce").on('click', function() {
+          event.preventDefault();
+          console.log('you clicked sauce');
+          $('#saucedrop').removeClass('hidden');
+        });
+        //dropdown meat
+        $("#dropdownMeat").on('click', function() {
+          event.preventDefault();
+          console.log('you clicked meat');
+          $('#meatdrop').removeClass('hidden');
+        });
+        //dropdown veggie
+        $("#dropdownVeggie").on('click', function() {
+          event.preventDefault();
+          console.log('you clicked veggie');
+          $('#veggiedrop').removeClass('hidden');
+        });
+        //dropdown cheese
+        $("#dropdownCheese").on('click', function() {
+          event.preventDefault();
+          console.log('you clicked cheese');
+          $('#cheesedrop').removeClass('hidden');
+        });
+
+
+        //refreshes option menu on licking a custom topping
+        $(".dropdown-item").on('click', function(){
+          event.preventDefault();
+          console.log('you are customizing');
+          $('.dropdown-menu').addClass('hidden');
+        });
+
+
+        //loging custom item order to the order form
+        $('.dropdown-item').on('click', function(event) {
+          event.preventDefault();
+          console.log($(this));
+          $('#sizeList').html($('input[name="size"]').val());
+        })
+
 
         $(".order-group").on('submit', function(event) {
             event.preventDefault();

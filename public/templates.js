@@ -1,6 +1,7 @@
 var pizzaTmpls = {
   myPizza:`
-    <ul class="final-order" data-id=" <%= _id %>">
+
+    <ul class="final-order" data-id="<%= _id %>">
     <li> <%= name %> </li>
     <li> <%= size %> </li>
     <li> <%= crust %> </li>

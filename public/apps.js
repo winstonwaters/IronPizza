@@ -26,6 +26,7 @@ var pizzaPage = {
             event.preventDefault();
             console.log("click");
             var pizzaToSave = {
+                    
                     name: $('.order-group input[name="order-list"]').val(),
                     size: $('input[name="size-list"]').val(),
                     crust: $('input[name="crust-list"]').val(),
@@ -37,15 +38,16 @@ var pizzaPage = {
                 // debugger
 
             console.log(pizzaToSave);
-            pizzaPage.createPizza(pizzaToSave);
-            // pizzaPage.create(JSON.stringify(pizzaToSave));
+            // pizzaPage.createPizza(pizzaToSave);
+            pizzaPage.createPizza(JSON.stringify(pizzaToSave));
 
-            // $('input').val("");
+            $('input').val("");
         })
         //delete pizza
         $("#cancel").on("click", function(event){
           event.preventDefault();
           var pizzaID = $(this).children().data('id');
+          console.log(this,pizzaID);
           pizzaPage.deletePizza(pizzaID);
         });
 
@@ -106,7 +108,7 @@ var pizzaPage = {
     },
 
     deletePizza: function(pizzaID) {
-        var deleteOrder = pizzaPage.url + '/' + pizzaID;
+        var deleteOrder = pizzaPage.url +'/'+pizzaID;
         $.ajax({
             url: deleteOrder,
             method: 'DELETE',

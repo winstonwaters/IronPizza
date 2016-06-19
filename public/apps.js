@@ -15,12 +15,12 @@ var pizzaPage = {
 
 
     events: function() {
-        $('#order').on("click", "submit", function(event) {
-            event.preventDefault();
-            console.log("click");
-            $('.order-group input[name="order-list"]').val($('input[name="order"]').val());
-            $('input[name="order"]').val("");
-        })
+        // $('#order').on("click", "submit", function(event) {
+        //     event.preventDefault();
+        //     console.log("click");
+        //     $('.order-group input[name="order-list"]').val($('input[name="order"]').val());
+        //     $('input[name="order"]').val("");
+        // })
 
         $(".order-group").on('submit', function(event) {
             event.preventDefault();

@@ -156,8 +156,8 @@ var pizzaPage = {
              pizzaPage.createPizza(JSON.stringify(pizzaToSave));
 
             $('input').val("");
-            // $('.pizza').removeClass('hidden');
-            // $('.ordering-container').addClass('hidden');
+            $('.pizza').removeClass('hidden');
+            $('.ordering-container').addClass('hidden');
         })
         //cancel pizza order
         $("#cancel").on("click", function(event){

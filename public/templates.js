@@ -9,3 +9,6 @@ var pizzaTmpls = {
     </ul>
    `
 }
+// <li> <%= topping[0] %> </li>
+// <li> <%= topping[1] %> </li>
+// <li> <%= topping[2] %> </li>

@@ -98,13 +98,6 @@ var pizzaPage = {
           $('input[name="topping3-list"]').val($(this).text());
         });
 
-        //showing dancing pizzaToSave
-        $('.orderButton').on('click', function(event) {
-          event.preventDefault();
-          console.log($(this));
-          $('.pizza').removeClass('hidden');
-          $('.ordering-container').addClass('hidden');
-        })
 
         $('#geoff').on('click', function() {
           event.preventDefault();
@@ -152,7 +145,7 @@ var pizzaPage = {
                     size: $('input[name="size-list"]').val(),
                     crust: $('input[name="crust-list"]').val(),
                     sauce: $('input[name="sauce-list"]').val(),
-                    topping: $(this)[{topping: $('input[name="topping1-list"]').val()},{topping:$('input[name="topping2-list"]').val()},{topping:$('input[name="topping3-list"]').val()}]
+                    topping:[{topping: $('input[name="topping1-list"]').val()},{topping:$('input[name="topping2-list"]').val()},{topping:$('input[name="topping3-list"]').val()}]
                     // topping2: $('input[name="topping2-list"]').val(),
                     // topping3: $('input[name="topping3-list"]').val(),
                 }
@@ -163,6 +156,8 @@ var pizzaPage = {
              pizzaPage.createPizza(JSON.stringify(pizzaToSave));
 
             $('input').val("");
+            $('.pizza').removeClass('hidden');
+            $('.ordering-container').addClass('hidden');
         })
         //cancel pizza order
         $("#cancel").on("click", function(event){
@@ -179,6 +174,7 @@ var pizzaPage = {
 
 
     createPizza: function(pizzaToSave) {
+      console.log(pizzaToSave);
         $.ajax({
             contentType: "application/json; charset=utf-8",
             url: pizzaPage.url,

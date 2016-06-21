@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="node_modules/normalize-css/normalize.css" media="screen" title="no title" charset="utf-8">
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css" media="screen" title="no title" charset="utf-8">
+    <link rel="stylesheet" href="main.css" media="screen" title="no title" charset="utf-8">
+    <title>Pizzeria di Ferro</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a href="#"><img class="pizzaLogo" src="Images/PizzeriaDiFerro_Logo.png" alt="logo" /></a>
+                <a class="navbar-brand" href="#" <img alt="Brand" src="Pizzeria di Ferro"></a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main body -->
+    <div class="ordering-container">
+
+
+        <div class="row leftside-order">
+            <div class="col-md-4">
+                <h1>Custom Pizza</h1>
+                <!-- pizza size -->
+                <div class="row">
+
+                    <div class="col-lg-offset-1 col-lg-10">
+                        <div class="dropdown">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownSize" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Size
+                            </button>
+
+                            <div class="dropdown-menu hidden" id="sizedrop" aria-labelledby="dropdownSize">
+                                <a class="dropdown-item size" href="#">Small</a>
+                                <a class="dropdown-item size" href="#">Medium</a>
+                                <a class="dropdown-item size" href="#">Large</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- pizza crust -->
+                <div class="row">
+
+                    <div class="col-lg-offset-1 col-lg-10">
+                        <div class="dropdown">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownCrust" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Crust
+                            </button>
+                            <div class="dropdown-menu hidden" id="crustdrop" aria-labelledby="dropdownCrust">
+                                <a class="dropdown-item crust" href="#">Thick</a>
+                                <a class="dropdown-item crust" href="#">Thin</a>
+                                <a class="dropdown-item crust" href="#">Stuffed</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- pizza: Sauce -->
+                <div class="row">
+
+                    <div class="col-lg-offset-1 col-lg-10">
+                        <div class="dropdown">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownSauce" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Sauce
+                            </button>
+                            <div class="dropdown-menu hidden" id="saucedrop" aria-labelledby="dropdownSauce">
+                                <a class="dropdown-item sauce" href="#">Garlic Aioli</a>
+                                <a class="dropdown-item sauce" href="#">Marinara</a>
+                                <a class="dropdown-item sauce" href="#">Tomato Basil</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- pizza: Meat -->
+                <div class="row">
+
+                    <div class="col-lg-offset-1 col-lg-10">
+                        <div class="dropdown">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMeat" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Meat
+                            </button>
+                            <div class="dropdown-menu hidden" id="meatdrop" aria-labelledby="dropdownMeat">
+                                <a class="dropdown-item topping1" href="#">Pepperoni</a>
+                                <a class="dropdown-item topping1" href="#">Buffolo Chicken</a>
+                                <a class="dropdown-item topping1" href="#">Bacon</a>
+                                <a class="dropdown-item topping1" href="#">Sausage</a>
+                                <a class="dropdown-item topping1" href="#">Ham</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- pizza: veggie -->
+                <div class="row">
+
+                    <div class="col-lg-offset-1 col-lg-10">
+                        <div class="dropdown open">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownVeggie" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Veggie
+                            </button>
+                            <div class="dropdown-menu hidden" id="veggiedrop" aria-labelledby="dropdownVeggie">
+                                <a class="dropdown-item topping2" href="#">Peppers</a>
+                                <a class="dropdown-item topping2" href="#">Mushroom</a>
+                                <a class="dropdown-item topping2" href="#">Onion</a>
+                                <a class="dropdown-item topping2" href="#">Olives</a>
+                                <a class="dropdown-item topping2" href="#">Pineapple</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- pizza: cheese -->
+                <div class="row">
+
+                    <div class="col-lg-offset-1 col-lg-10">
+                        <div class="dropdown open">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownCheese" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Cheese
+                            </button>
+                            <div class="dropdown-menu hidden" id="cheesedrop" aria-labelledby="dropdownCheese">
+                                <a class="dropdown-item topping3" href="#">Mozzarella</a>
+                                <a class="dropdown-item topping3" href="#">Cheddar</a>
+                                <a class="dropdown-item topping3" href="#">Gouda</a>
+                                <a class="dropdown-item topping3" href="#">Parmesan</a>
+                                <a class="dropdown-item topping3" href="#">Colby Jack</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- MIDDLE COL -->
+            <div class="col-md-4">
+                <h1>Seasonal Specials</h1>
+
+                <div class="row" class="middle">
+                    <div class="col-lg-offset-1 col-lg-10">
+                        <button type="button" class="list-group-item" id="geoff">
+                            <h3>The Geoff<h3>
+                  <p>Triple Pepperoni Classic<p>
+                </button>
+                <button type="button" class="list-group-item" id="ben">
+                  <h3>The Ben<h3>
+                  <p>Buffalo Chicken<p>
+                </button>
+                <button type="button" class="list-group-item" id="lydell">
+                  <h3>The Lydell<h3>
+                  <p>Buffalo Chicken, Pepperoni, and Bacon<p>
+                </button>
+                <button type="button" class="list-group-item" id="winston">
+                  <h3>The Winston<h3>
+                  <p>Tomato, Mozzarella, Basil, and Parmesan<p>
+                </button>
+
+              </div>
+          </div>
+
+
+        </div>
+
+        <form class="col-md-4 order-group">
+          <h1>Your Order</h1>
+            <div class="col-lg-offset-1 col-lg-10">
+
+                <ul class="list-group">
+                    <li class="list-group-item">
+                      <input type="text" name="order-list" value="" class="form-control" placeholder="Order Name" >
+                    </li>
+                    <li class="list-group-item"><input type="text" name="size-list" value="" class="form-control" placeholder="Size" ></li>
+                    <li class="list-group-item"><input type="text" name="crust-list" value="" class="form-control" placeholder="Crust" ></li>
+                    <li class="list-group-item"><input type="text" name="sauce-list" value="" class="form-control" placeholder="Sauce" ></li>
+                    <li class="list-group-item"><input type="text" name="topping1-list" value="" class="form-control" placeholder="Meat" ></li>
+                    <li class="list-group-item"><input type="text" name="topping2-list" value="" class="form-control" placeholder="Veggie" ></li>
+                    <li class="list-group-item"><input type="text" name="topping3-list" value="" class="form-control" placeholder="Cheese" ></li>
+                    <button type="submit" class="orderButton">Order Pizza!</button>
+                </ul>
+            </div>
+
+        </form>
+
+    </div>
+
+    </div>
+
+    <!--Dancing Pizza-->
+    <div class="jumbotron pizza hidden">
+      <div class='container'>
+        <div class="row dance">
+          <h1>Your pizza order is on it's way!</h1>
+          <div class="col-md-6"><img class="dancingPizza" src="Images/pizza.gif" alt="gif" />
+          </div>
+
+          <div class="col-md-6" id="cancel">
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+    <div class="jumbotron footer">
+        <h1 class="display-3">The Best Pizza in Downtown Charleston</h1>
+        <p class="lead"> All The Iron Yard Students needs their Iron Pizza feul! Fresh, made-from-scratch dough. Healthful, artisanal ingredients on the assembly line. Inventive to classic. You decide. Blazing hot oven + dedicated pizzasmith + 180 seconds = fast-fired, perfectly crisp perfection.</p>
+        <hr class="m-y-2">
+        <p>Visit: 16 Princess St. Charleston, SC 29403</p>
+        <p>Call: (843) 584-5880</p>
+        <!-- <p class="lead">
+            <a class="btn btn-primary btn-lg" href="#" role="button">Call Us</a>
+        </p> -->
+    </div>
+
+    <script   src="https://code.jquery.com/jquery-2.2.4.js"   integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI="   crossorigin="anonymous"></script>
+    <script src="node_modules/jquery/dist/jquery.js" charset="utf-8"></script>
+    <script src="node_modules/underscore/underscore.js" charset="utf-8"></script>
+    <script src="templates.js" charset="utf-8"></script>
+
+
+    <script src="apps.js" charset="utf-8"></script>
+    <!-- <script src="testclick.js" charset="utf-8"></script> -->
+
+</body>
+
+</html>

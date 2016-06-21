@@ -1,14 +1,1 @@
-var pizzaTmpls = {
-  myPizza:`
-    <ul class="final-order" data-id="<%= id %>">
-    <li> <%= name %> </li>
-    <li> <%= size %> </li>
-    <li> <%= crust %> </li>
-    <li> <%= sauce %> </li>
-    <li> <p><a class="btn btn-primary btn-lg delete" href="#">Cancel Order</a></p> </li>
-    </ul>
-   `
-}
-// <li> <%= topping[0] %> </li>
-// <li> <%= topping[1] %> </li>
-// <li> <%= topping[2] %> </li>
+"use strict";var pizzaTmpls={myPizza:'\n    <ul class="final-order" data-id="<%= id %>">\n    <li> <%= name %> </li>\n    <li> <%= size %> </li>\n    <li> <%= crust %> </li>\n    <li> <%= sauce %> </li>\n    <li> <p><a class="btn btn-primary btn-lg delete" href="#">Cancel Order</a></p> </li>\n    </ul>\n   '};

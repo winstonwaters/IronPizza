@@ -1,0 +1,256 @@
+@font-face {
+    font-family: TheWildThings;
+    src: url("./TheWildThings/The Wild Things - Bold.otf");
+}
+@font-face {
+    font-family: TheWildThingsScript;
+    src: url("./TheWildThingsScript/TheWildThingsScript.otf");
+}
+@font-face {
+    font-family: Whitney;
+    src: url("./Whitney/Whitney-Light.otf");
+}
+* {
+    font-family: Whitney;
+    color: #3C3C3C;
+}
+.col-md-4 {
+    border: 0.3rem solid white;
+    border-spacing: 1px;
+    background-color: lightcoral;
+    height: 45.5em;
+}
+.col-md-6 .dance {
+    list-style: none;
+    width: 48%;
+    display: inline-block;
+    padding: 0;
+    margin: 0;
+}
+.col-md-6 ul {
+    padding-top: 20rem;
+    list-style: none;
+    padding-right: 41px;
+    font-family: TheWildThings;
+    font-size: x-large;
+}
+
+/*dropdown menu*/
+
+.dropdown {
+    margin-top: 2%;
+    display: block;
+    margin-bottom: 0%;
+    font-family: TheWildThings;
+}
+.dropdown .btn {
+    color: #3C3C3C;
+    width: 100%;
+    font-size: 4rem;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+}
+.dropdown .btn:hover {
+    background-color: rgb(226, 226, 226);
+    text-shadow: 90;
+}
+.dropdown-menu {
+    position: absolute;
+    margin-top: 2%;
+    margin-bottom: 15%;
+    top: 100%;
+    left: 0;
+    z-index: 1000;
+    display: block;
+    float: center;
+    width: 100%;
+    padding: 5px 0;
+    margin: 2px 0 0;
+    font-size: 13px;
+    text-align: left;
+    list-style: none;
+    background-color: #fefefe;
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+    border: 1px solid #ccc;
+    border: 1px solid rgba(0, 0, 0, .15);
+    border-radius: 4px;
+    -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+}
+.dropdown-menu a {
+    justify-content: center;
+    text-align: center;
+    display: block;
+    color: #3C3C3C;
+    font-size: 2.6rem;
+    text-decoration: none;
+    font-family: TheWildThingsScript;
+}
+.dropdown-menu .dropdown-item:hover {
+    color: #3C3C3C;
+    font-size: 3.4rem;
+    text-decoration: none;
+    font-family: TheWildThings;
+}
+
+/*navigation styling*/
+
+.container-fluid {
+    margin-bottom: 1px;
+    position: relative;
+    padding-right: 49%;
+    padding-left: 44%;
+    margin-right: 0;
+    margin-top: 0;
+}
+.navbar-default {
+    margin-bottom: 0px;
+    /*background: linear-gradient(to bottom, #f8f8f8, #a2a2a2);*/
+    background-color: #f8f8f8;
+    border-color: #e7e7e7;
+}
+.navbar-header img {
+    margin: 0 auto;
+    vertical-align: top;
+    max-width: 170px;
+}
+
+/*ordering container*/
+
+.ordering-container {
+    margin-bottom: -70px;
+    padding: 0;
+}
+.ordering-container h1 {
+    text-align: center;
+    font-size: 7rem;
+    font-family: TheWildThingsScript;
+}
+.orderButton {
+    color: #3C3C3C;
+    width: 100%;
+    font-size: 4rem;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+    font-weight: lighter;
+    width: 100%;
+    padding: 13px;
+    font-family: TheWildThings;
+    background-color: rgb(200, 200, 200);
+    padding-bottom: 23px;
+    border-radius: 3px;
+    border: 1px white;
+    font-size: 6.2rem;
+    line-height: 2rem;
+}
+.orderButton:hover {
+    background-color: rgb(226, 226, 226);
+    text-shadow: 90;
+}
+
+/*middle container*/
+
+.list-group-item h3 {
+    font-family: TheWildThingsScript;
+    line-height: 20%;
+    font-size: 3rem;
+}
+.list-group-item p {
+    line-height: 40%;
+    size: 7rem;
+    font-family: TheWildThings;
+}
+
+/*footer*/
+
+.jumbotron {
+    color: #3C3C3C;
+    margin: 3%;
+    background-color: white;
+}
+.footer h1 {
+    line-height: 7.1rem;
+    max-width: 1202px;
+    font-size: 10rem;
+    font-family: TheWildThingsScript;
+}
+.jumbotron p {
+    line-height: 60%;
+    font-family: TheWildThings;
+    max-width: 992px;
+    margin-bottom: 15px;
+    font-size: 5rem;
+    font-weight: 200;
+}
+.jumbotron a {
+    color: #3C3C3C;
+    line-height: 60%;
+    font-family: TheWildThings;
+    max-width: 992px;
+    margin-bottom: 15px;
+    font-size: 5rem;
+    font-weight: 200;
+}
+.jumbotron a:hover {
+    color: #FF8300;
+}
+
+/*order completed dancing pizza*/
+
+.pizza {
+    width: 100%;
+    margin: 0 auto;
+}
+.pizza .container {
+    text-align: -webkit-center;
+    width: 100%;
+    margin: 0 auto;
+}
+.pizza a {
+    font-weight: 100;
+    padding-bottom: 1%;
+    border: none;
+    background-color: white;
+    color: #3C3C3C;
+    line-height: 60%;
+    font-family: TheWildThings;
+    font-size: 5rem;
+    font-weight: 200;
+}
+.pizza a:hover {
+    border: none;
+    background-color: #3C3C3C;
+    color: white;
+}
+.pizza h1 {
+    line-height: 8rem;
+    padding: 0;
+    font-size: 10rem;
+    font-family: TheWildThingsScript;
+    margin: 68px auto;
+    margin-bottom: 1em;
+}
+.pizza img {
+    vertical-align: top;
+    justify-content: center;
+    margin: 0 auto;
+    padding: 0;
+}
+.hidden {
+    display: none;
+}
+@-webkit-keyframes fade {
+    from {
+        opacity: .4
+    }
+    to {
+        opacity: 1
+    }
+}
+@keyframes fade {
+    from {
+        opacity: .4
+    }
+    to {
+        opacity: 1
+    }
+}
